@@ -1,13 +1,20 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spreadsheet/data/dropdownitems.dart';
+import 'package:spreadsheet/firebase_options.dart';
 import 'package:spreadsheet/monumentmodel.dart';
 import 'package:spreadsheet/ui/button.dart';
 import 'package:spreadsheet/ui/customdropdown.dart';
 import 'package:spreadsheet/ui/monumentlst.dart';
 import 'package:spreadsheet/ui/textfield.dart';
 
-void main(){
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 

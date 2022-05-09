@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:spreadsheet/ad_helper.dart';
 import 'package:spreadsheet/data/dropdownitems.dart';
 import 'package:spreadsheet/firebase_options.dart';
 import 'package:spreadsheet/monumentmodel.dart';
@@ -44,6 +46,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  late BannerAd _bannerAd;
+  bool _isBannerAdReady = false;
+
   late Future<List<MonumentModel>> monuments;
   final _editController1 = TextEditingController();
   final _editController2 = TextEditingController();
@@ -58,6 +64,30 @@ class _MyHomePageState extends State<MyHomePage> {
   String? endTmp;
   String? toneTmp;
 
+  @override
+  void initState(){
+    super.initState();
+    _bannerAd = BannerAd(
+        adUnitId: AdHelper.bannerAdUnitId,
+        request: const AdRequest(),
+    size: AdSize.banner,
+    listener: BannerAdListener(
+    onAdLoaded: (_)
+    {
+      //print("できてるらしい");
+      setState(() {
+        _isBannerAdReady = true;
+      });
+    },
+      onAdFailedToLoad: (ad, err) {
+        //print('Failed to load a banner ad: ${err.message}');
+        _isBannerAdReady = false;
+        ad.dispose();
+      },
+    ),
+    );
+    _bannerAd.load();
+  }
   // MyHomePage({ required this.monuments});
   @override
   Widget build(BuildContext context) {
@@ -227,53 +257,63 @@ class _MyHomePageState extends State<MyHomePage> {
                           .size
                           .height * 0.32,
                       child: monumentList(context, MonumentModel.searchMonument3(snapshot.data!, chineseTmp, catOnKneesTmp, yaleTmp, jyutpingTmp, initialTmp, vowelTmp, endTmp, toneTmp)))
-                      : Center(child: CircularProgressIndicator()),
+                      : SizedBox(
+                    height: MediaQuery
+                .of(context)
+                .size
+                .height * 0.32,
+                      child: Center(child: CircularProgressIndicator())),
                   Container(
                     height: MediaQuery
                         .of(context)
                         .size
                         .height * 0.075,
-                    child: Card(
-                      child: TextButton(
-                          onPressed: () {},
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment
-                                  .spaceBetween,
-                              children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text("YouTube"),
-                                    Image.asset("assets/catonkneeslogo2.png",
-                                        height: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .height * 0.01 ),
-                                  ],
-                                ),
-                                Container(
-                                    width: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width * 0.3,
-                                    child: Text(
-                                        "独学で広東語を学んだ日本人Mikoによる関東後・香港情報を無料配信チャンネル！",style: TextStyle(fontSize: 10.sp),)),
-                                Container(
-                                    width: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width * 0.2,
-                                    child: Text("広東語マスター動画",style: TextStyle(fontSize: 10.sp))),
-                                Container(
-                                    width: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width * 0.1,
-                                    child: Text("チャンネル登録",style: TextStyle(fontSize: 10.sp)))
-                              ]
-                          )
-                      ),
-                    ),
+                    child: (_isBannerAdReady)?SizedBox(
+            width: _bannerAd.size.width.toDouble(),
+            height: _bannerAd.size.height.toDouble(),
+            child: AdWidget(ad: _bannerAd),
+            ):SizedBox(width: 30, height: 47),
+                    // Card(
+                    //   child: TextButton(
+                    //       onPressed: () {},
+                    //       child: Row(
+                    //           mainAxisAlignment: MainAxisAlignment
+                    //               .spaceBetween,
+                    //           children: [
+                    //             Column(
+                    //               mainAxisAlignment: MainAxisAlignment.center,
+                    //               children: [
+                    //                 Text("YouTube"),
+                    //                 Image.asset("assets/catonkneeslogo2.png",
+                    //                     height: MediaQuery
+                    //                     .of(context)
+                    //                     .size
+                    //                     .height * 0.01 ),
+                    //               ],
+                    //             ),
+                    //             Container(
+                    //                 width: MediaQuery
+                    //                     .of(context)
+                    //                     .size
+                    //                     .width * 0.3,
+                    //                 child: Text(
+                    //                     "独学で広東語を学んだ日本人Mikoによる関東後・香港情報を無料配信チャンネル！",style: TextStyle(fontSize: 10.sp),)),
+                    //             Container(
+                    //                 width: MediaQuery
+                    //                     .of(context)
+                    //                     .size
+                    //                     .width * 0.2,
+                    //                 child: Text("広東語マスター動画",style: TextStyle(fontSize: 10.sp))),
+                    //             Container(
+                    //                 width: MediaQuery
+                    //                     .of(context)
+                    //                     .size
+                    //                     .width * 0.1,
+                    //                 child: Text("チャンネル登録",style: TextStyle(fontSize: 10.sp)))
+                    //           ]
+                    //       )
+                    //   ),
+                    // ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15.0.h),

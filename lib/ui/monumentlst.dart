@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spreadsheet/monumentmodel.dart';
 import 'package:spreadsheet/secondpage.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 Widget monumentList(BuildContext context, List<MonumentModel> monumentList, ) {
 
   // List<MonumentModel>? monumentList2 = MonumentModel.searchMonument3(monumentList, "xx");
@@ -9,7 +9,7 @@ Widget monumentList(BuildContext context, List<MonumentModel> monumentList, ) {
 
   return monumentList2.isNotEmpty ? Column(
     children: [
-      SizedBox(height: 30,
+      SizedBox(height: 20.h,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -41,11 +41,11 @@ Widget monumentList(BuildContext context, List<MonumentModel> monumentList, ) {
               // else{
               //   int index = index1-1;
               return Card(
-                margin: EdgeInsets.symmetric(horizontal:5, vertical: 2),
+                margin: EdgeInsets.symmetric(horizontal:5.w, vertical: 2.h),
                   color: (index%2 == 0)? Colors.white: Colors.grey.shade100,
                   child: ListTile(
                     title: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      padding: EdgeInsets.symmetric(horizontal: 8.0.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,10 +56,10 @@ Widget monumentList(BuildContext context, List<MonumentModel> monumentList, ) {
                             height: MediaQuery.of(context).size.width *0.12,
                             decoration: BoxDecoration(
                               color: Colors.grey,
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(30.h),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(7.0),
+                              padding: EdgeInsets.all(7.0.w),
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
@@ -67,7 +67,7 @@ Widget monumentList(BuildContext context, List<MonumentModel> monumentList, ) {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Colors.white,
-                                      fontWeight: FontWeight.bold, fontSize: 25),
+                                      fontWeight: FontWeight.bold, fontSize: 25.sp),
                                 ),
                               ),
                             ),
@@ -75,10 +75,11 @@ Widget monumentList(BuildContext context, List<MonumentModel> monumentList, ) {
                           SizedBox(
                             width: MediaQuery.of(context).size.width *0.3,
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(8.0.w),
                               child: Text(monumentList2[index].catOnknees,
                                 textAlign: TextAlign.left,
-                                style: TextStyle(fontWeight: FontWeight.bold),),
+                                style: TextStyle(fontWeight: FontWeight.bold,
+                                fontSize: 15.sp),),
                             ),
                           ),
                           Container(
@@ -107,7 +108,7 @@ Widget monumentList(BuildContext context, List<MonumentModel> monumentList, ) {
                                       style: ButtonStyle(
                                         foregroundColor: MaterialStateProperty.all<Color>(Colors.black54)
                                       ),
-                                      child: Icon(Icons.info_outlined, size: 30,)),
+                                      child: Icon(Icons.info_outlined, size: 30.sp,)),
                                 ),
                                 if (monumentList2[index].voice != "")SizedBox(
                                   width: MediaQuery.of(context).size.width*0.1,
@@ -116,7 +117,7 @@ Widget monumentList(BuildContext context, List<MonumentModel> monumentList, ) {
                                           foregroundColor: MaterialStateProperty.all<Color>(Colors.black54)
                                       ),
                                     onPressed: (){},
-                                    child: Icon(Icons.volume_up, size: 30,)
+                                    child: Icon(Icons.volume_up, size: 30.sp,)
                                   ),
                                 ),
                               ],

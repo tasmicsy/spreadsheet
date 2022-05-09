@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spreadsheet/data/dropdownitems.dart';
 import 'package:spreadsheet/monumentmodel.dart';
 import 'package:spreadsheet/ui/button.dart';
@@ -7,7 +8,27 @@ import 'package:spreadsheet/ui/monumentlst.dart';
 import 'package:spreadsheet/ui/textfield.dart';
 
 void main(){
-  runApp(MaterialApp(home:MyHomePage()));
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
+      designSize: const Size(360,900),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+            home:MyHomePage());
+      }
+    );
+  }
 }
 
 class MyHomePage extends StatefulWidget {
@@ -33,27 +54,42 @@ class _MyHomePageState extends State<MyHomePage> {
   // MyHomePage({ required this.monuments});
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         backgroundColor: Color.fromRGBO(228, 219, 216, 1),
         body: FutureBuilder<List<MonumentModel>>(
           future: MonumentModel.fetchMonument(),
           builder: (context, snapshot) {
+            ScreenUtil.init(context,
+                orientation: Orientation.landscape,
+                deviceSize: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),
+
+            );
             if (snapshot.hasError) print('now${snapshot.error}');
             return Padding(
-              padding: const EdgeInsets.only(top: 50.0, bottom: 15),
+              padding:  EdgeInsets.only(top: 35.h, bottom: 13.h),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("世界初！広東語発音ひらがな表記"),
+                    padding: EdgeInsets.only(top: 7.0.h),
+                    child: Text("世界初！広東語発音ひらがな表記", style: TextStyle(
+                      fontSize: 17.sp
+                    ),),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset("assets/logostraight.png", width: MediaQuery
-                        .of(context)
-                        .size
-                        .width * 0.8,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset("assets/logostraight.png", height: 30.h,
+            // width: MediaQuery
+            //               .of(context)
+            //               .size
+            //               .width * 0.65,
+                      ),
+                      SizedBox(
+                          height: 50.h,
+                          child: FittedBox(child: Text(" 式", style: TextStyle(fontSize: 40.sp),))),
+                    ],
                   ),
                   SizedBox(
                     height: MediaQuery
@@ -189,7 +225,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: MediaQuery
                         .of(context)
                         .size
-                        .height * 0.08,
+                        .height * 0.075,
                     child: Card(
                       child: TextButton(
                           onPressed: () {},
@@ -214,26 +250,26 @@ class _MyHomePageState extends State<MyHomePage> {
                                         .size
                                         .width * 0.3,
                                     child: Text(
-                                        "独学で広東語を学んだ日本人Mikoによる関東後・香港情報を無料配信チャンネル！",style: TextStyle(fontSize: 10),)),
+                                        "独学で広東語を学んだ日本人Mikoによる関東後・香港情報を無料配信チャンネル！",style: TextStyle(fontSize: 10.sp),)),
                                 Container(
                                     width: MediaQuery
                                         .of(context)
                                         .size
                                         .width * 0.2,
-                                    child: Text("広東語マスター動画",style: TextStyle(fontSize: 10))),
+                                    child: Text("広東語マスター動画",style: TextStyle(fontSize: 10.sp))),
                                 Container(
                                     width: MediaQuery
                                         .of(context)
                                         .size
                                         .width * 0.1,
-                                    child: Text("チャンネル登録",style: TextStyle(fontSize: 10)))
+                                    child: Text("チャンネル登録",style: TextStyle(fontSize: 10.sp)))
                               ]
                           )
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    padding: EdgeInsets.symmetric(horizontal: 15.0.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [Text("お問い合わせ"), Text("catonknees.com")],

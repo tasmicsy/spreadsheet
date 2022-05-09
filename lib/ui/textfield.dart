@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CustomTextField extends StatelessWidget {
   String label;
   TextEditingController editController;
@@ -14,15 +14,16 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 3),
+      padding: EdgeInsets.symmetric(horizontal: 0, vertical: 2.h),
       child: Container(
-        height:40,
+        height:35.h,
         child: TextField(
           controller: editController,
           onChanged: onChangedFunc,
           decoration: InputDecoration(
               labelStyle: TextStyle(
                 color: Colors.black54,
+                fontSize: 15.sp,
               ),
               // focusColor: Colors.black54,
             enabledBorder: OutlineInputBorder(

@@ -106,21 +106,27 @@ static List<MonumentModel> searchMonument3(List<MonumentModel> monumentList,Stri
   if(firstItem== null && secondItem==null &&thirdItem==null&&fourthItem==null&&fifthItem==null&&sixthItem == null && seventhItem == null && eighthItem == null){
     monumentList2 =monumentList;
   }else{
+    int s = 0;
     for(var i=0;i<monumentList.length;i++) {
-      if ((firstItem != null && monumentList[i].chinese.contains(firstItem))
-          || (secondItem != null && monumentList[i].catOnknees.contains(secondItem))
-          || (thirdItem != null && monumentList[i].yale.contains(thirdItem))
-          || (fourthItem != null && monumentList[i].jyutpin.contains(fourthItem))
-          || (fifthItem != null && monumentList[i].initial.contains(fifthItem))
-          || (sixthItem != null && monumentList[i].vowel.contains(sixthItem))
-          || (seventhItem != null && monumentList[i].end.contains(seventhItem))
-          || (eighthItem != null && monumentList[i].tone.contains(eighthItem))
+      if (((firstItem == "")? monumentList[i].chinese == "":monumentList[i].chinese.contains(firstItem??""))
+          && ((secondItem == "")? monumentList[i].catOnknees == "":monumentList[i].catOnknees.contains(secondItem??""))
+           && ((thirdItem == "")? monumentList[i].yale == "":monumentList[i].yale.contains(thirdItem??""))
+          && ((fourthItem == "")? monumentList[i].jyutpin == "":monumentList[i].jyutpin.contains(fourthItem??""))
+          && ((fifthItem == "")? monumentList[i].initial == "":monumentList[i].initial.contains(fifthItem??""))
+          &&((sixthItem == "")? monumentList[i].vowel == "":monumentList[i].vowel.contains(sixthItem??""))
+          && ((seventhItem == "")? monumentList[i].end == "":monumentList[i].end.contains(seventhItem??""))
+          && ((eighthItem == "")? monumentList[i].tone == "":monumentList[i].tone.contains(eighthItem??""))
 
       ) {
-        monumentList2.insert(0, monumentList[i]);
-        monumentList2.reversed;
+
+        monumentList2.insert(s, monumentList[i]);
+       // print(monumentList2[s].yale);
+        s=s+1;
       }
+
     }
+    //monumentList2.reversed;
+
     }
     return monumentList2;
 }

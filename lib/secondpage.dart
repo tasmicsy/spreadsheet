@@ -2,9 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:spreadsheet/monumentmodel.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SecondPage extends StatelessWidget {
+class SecondPage extends StatefulWidget {
   MonumentModel monument;
+
  SecondPage({required this.monument,Key? key}) : super(key: key);
+
+  @override
+  State<SecondPage> createState() => _SecondPageState();
+}
+
+class _SecondPageState extends State<SecondPage> {
+  bool expanded1 = false;
+
+  bool expanded2 = false;
+
+  bool expanded3 = false;
+
+  bool expanded4 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +32,28 @@ class SecondPage extends StatelessWidget {
         child:         Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SizedBox(height: 10),
+                SizedBox(
+                  height: 10,
+                  child: TextButton(
+                    style: ButtonStyle(
+                      fixedSize: MaterialStateProperty.all(Size(10, 10)),
+                      padding: MaterialStateProperty.all(EdgeInsets.zero),
+                        alignment: Alignment.centerRight),
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.clear, color: Colors.grey,)
+                  ),
+                ),
+              ],
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(monument.chinese, style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.4, color: Colors.grey, fontWeight: FontWeight.bold),),
+                Text(widget.monument.chinese, style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.4, color: Colors.grey, fontWeight: FontWeight.bold),),
                 Column(
                   children:[Column(
                     children: [
@@ -30,19 +63,19 @@ class SecondPage extends StatelessWidget {
                           fit: BoxFit.fitWidth,
                             child: Text('CatOnKnees式:', style: TextStyle(fontSize: 30, color: Color.fromRGBO(204, 204, 204, 1)),)),
                       ),
-                        Text(monument.catOnknees,style: TextStyle(fontSize: 30, color: Colors.grey), ),
-                      Text("イエール式:${monument.yale}",style: TextStyle(fontSize: 20, color: Colors.grey), ),
-                      Text("粵拼: ${monument.jyutpin}",style: TextStyle(fontSize: 20, color: Colors.grey), ),
+                        Text(widget.monument.catOnknees,style: TextStyle(fontSize: 30, color: Colors.grey), ),
+                      Text("イエール式:${widget.monument.yale}",style: TextStyle(fontSize: 20, color: Colors.grey), ),
+                      Text("粵拼: ${widget.monument.jyutpin}",style: TextStyle(fontSize: 20, color: Colors.grey), ),
                      // if (monument.voice!="")
                        Icon(Icons.volume_up)
                     ],
                   ),
-        
-        
-        
+
+
+
                     ]
                 )
-        
+
               ],
             ),
         SizedBox(
@@ -50,9 +83,11 @@ class SecondPage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                CustomBoard(color: Color.fromRGBO(239, 239, 239, 1),contents: Column(
+                CustomBoard(
+                  title:  CustromTitle(title: "日本人向け発音のコツ"),
+                  color: Color.fromRGBO(239, 239, 239, 1),contents: Column(
                   children: [
-                    CustromTitle(title: "日本人向け発音のコツ"),
+
                     Padding(
                       padding: EdgeInsets.symmetric(vertical:8.0, horizontal: MediaQuery.of(context).size.width*0.04),
                       child: Container(
@@ -103,36 +138,56 @@ class SecondPage extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
 
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(monument.initial, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20)),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(monument.vowel, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20)),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(monument.end, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20)),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(monument.tone, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.initial, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.vowel, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.end, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.tone, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20)),),
                                 ],),
                             ],
                           ),
                         ),
                       ),
                     ),
-                    Text(monument.cokVowel),
-                    Text(monument.cokTips2),
-                    Text(monument.cokTips3),
-                    Text(monument.cokTips4),
+                    Text(widget.monument.cokVowel),
+                    Text(widget.monument.cokTips2),
+                    Text(widget.monument.cokTips3),
+                    Text(widget.monument.cokTips4),
                   ],
-                ),),
+                ), expanded: expanded1,
+                  expansionFunc: (panelIndex, isExpanded){
+                    setState((){expanded1 = (expanded1) ?  false: true;
+                    print(expanded1);});
+                  },
+                ),
                   CustomBoard(
+                    title: CustromTitle(title: "単語・フレーズ"),
+                      expanded: expanded2,
+                      expansionFunc: (panelIndex, isExpanded){
+                        setState((){expanded2  = (expanded2) ?  false: true;});
+                      },
                     color: Color.fromRGBO(217, 217, 217, 1),
                       contents: Column(
                       children: [CustromTitle(title: "単語・フレーズ")]
                   )),
                     CustomBoard(
+                      title: CustromTitle(title: "CatOnKneesメモ"),
+                        expanded: expanded3,
+                        expansionFunc: (panelIndex, isExpanded){
+                          setState((){expanded3  = (expanded3) ?  false: true;});
+                        },
                         color: Color.fromRGBO(243, 230, 230, 1),
                         contents: Column(
-                            children: [CustromTitle(title: "CatOnKneesメモ")]
+                            children: []
                         )),
                     CustomBoard(
+                      title:CustromTitle(title: "音声学的解説"),
+                        expanded: expanded4,
+                        expansionFunc: (panelIndex, isExpanded){
+                          setState((){expanded4  = (expanded4) ?  false: true;});
+                        },
                         color: Color.fromRGBO(239, 239, 239, 1),
                         contents: Column(
-                            children: [CustromTitle(title: "音声学的解説")]
+                            children: []
                         )),
               ],
             ),
@@ -155,17 +210,20 @@ class CustromTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+      padding:EdgeInsets.symmetric(vertical: 8.h),
+      child: Text(title, textAlign: TextAlign.center,style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold)),
     );
   }
 }
 
 class CustomBoard extends StatelessWidget {
+  void Function(int, bool) expansionFunc;
   Widget contents;
   Color color;
-  CustomBoard({
-    required this.color, required this. contents, Key? key}) : super(key: key);
+  bool expanded;
+  Widget title;
+  CustomBoard({required this.title,required this.expanded,
+    required this.expansionFunc,required this.color, required this. contents, Key? key}) : super(key: key);
 
 
   @override
@@ -184,9 +242,38 @@ class CustomBoard extends StatelessWidget {
             ),
           ],
           color: color,
-
         ),
-        child: contents,
+        child: ExpansionPanelList(
+          expandedHeaderPadding: EdgeInsets.zero,
+          animationDuration: Duration(milliseconds: 1000),
+          children: [ExpansionPanel(
+            backgroundColor: color,
+            isExpanded: expanded,
+            canTapOnHeader: true,
+            headerBuilder: (BuildContext context, bool isExpanded) {
+              return title;
+            },
+            body: Container(
+              width: MediaQuery.of(context).size.width*0.8,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black45, //色
+                    spreadRadius: 0,
+                    blurRadius: 3,
+                    offset: Offset(1, 1),
+                  ),
+                ],
+                color: color,
+
+              ),
+              child: contents,
+            ),
+
+          )],
+    dividerColor: Colors.grey,
+    expansionCallback: expansionFunc,
+        ),
       ),
     );
   }

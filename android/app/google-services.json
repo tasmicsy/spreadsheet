@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "288540183055",
+    "project_id": "app-conversion-ed72f",
+    "storage_bucket": "app-conversion-ed72f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:288540183055:android:39cd92df4161c6d1e3717a",
+        "android_client_info": {
+          "package_name": "com.catonknees.conversion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "288540183055-dev3umge73l96f4oae1iotvp82e2qpki.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_hgn9GmeWlOwQEUJCeMHDhzWrgI3GBmk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "288540183055-dev3umge73l96f4oae1iotvp82e2qpki.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "288540183055-snkk4emag1rlq0b6h27qsm5o0lq6f8jv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.catonknees.conversion"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

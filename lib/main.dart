@@ -10,11 +10,11 @@ import 'package:spreadsheet/ui/button.dart';
 import 'package:spreadsheet/ui/customdropdown.dart';
 import 'package:spreadsheet/ui/monumentlst.dart';
 import 'package:spreadsheet/ui/textfield.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(MyApp());
@@ -63,6 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String? vowelTmp;
   String? endTmp;
   String? toneTmp;
+  bool? voiceTmp;
 
   @override
   void initState(){
@@ -128,6 +129,28 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: FittedBox(child: Text(" 式", style: TextStyle(fontSize: 40.sp),))),
                     ],
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('広東語発音完全解説動画は'),
+                      SizedBox(
+                        height: 30.h,
+                        width: 55.w,
+                        child: TextButton(
+                            onPressed: ()async {
+                              launchUrl(Uri.parse('https://www.youtube.com/c/catonknees'));
+                            },
+                            style: ButtonStyle(
+                              alignment: Alignment.topLeft
+                            ),
+
+                            child: Text('こちら',style: TextStyle(
+                              decoration: TextDecoration.underline,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.brown),textAlign: TextAlign.start,)),
+                      )
+                    ],
+                  ),
                   SizedBox(
                     height: MediaQuery
                         .of(context)
@@ -151,6 +174,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             vowelTmp= vowelTmp;
                             endTmp= endTmp;
                             toneTmp= toneTmp;
+
                           });
                           },),
                         CustomTextField(editController: _editController2,label: "ひらがな CatOnKnees", onChangedFunc: (newText){
@@ -225,9 +249,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                   vowelTmp= vowelTmp;
                                   endTmp= endTmp;
                                   toneTmp= toneTmp;
+                                  voiceTmp = true;
                                 });
+                                print(voiceTmp);
                               },color: Color.fromRGBO(186, 206, 179, 1),
-                                  label: "検索 Search"),
+                                  icon: Icons.volume_up),
                               CustomButton(onPressedFunc: (){setState((){
     pickerValue = [null,null,null,null];
     _editController1.clear();
@@ -243,8 +269,9 @@ class _MyHomePageState extends State<MyHomePage> {
     vowelTmp= null;
     endTmp= null;
     toneTmp= null;
+    voiceTmp = null;
     });},color: Color.fromRGBO(251, 229, 153, 1),
-                                  label: "リセット Clear")
+                                  icon: Icons.delete)
                             ]
                         ),
                       ],
@@ -256,7 +283,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           .of(context)
                           .size
                           .height * 0.32,
-                      child: monumentList(context, MonumentModel.searchMonument3(snapshot.data!, chineseTmp, catOnKneesTmp, yaleTmp, jyutpingTmp, initialTmp, vowelTmp, endTmp, toneTmp)))
+                      child: monumentList(context, MonumentModel.searchMonument3(snapshot.data!, chineseTmp, catOnKneesTmp, yaleTmp, jyutpingTmp, initialTmp, vowelTmp, endTmp, toneTmp, voiceTmp??false)))
                       : SizedBox(
                     height: MediaQuery
                 .of(context)
@@ -268,11 +295,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         .of(context)
                         .size
                         .height * 0.075,
-                    child: (_isBannerAdReady)?SizedBox(
+                    child:
+                    (_isBannerAdReady)?SizedBox(
             width: _bannerAd.size.width.toDouble(),
             height: _bannerAd.size.height.toDouble(),
             child: AdWidget(ad: _bannerAd),
-            ):SizedBox(width: 30, height: 47),
+            ):
+                    SizedBox(width: 30, height: 47),
                     // Card(
                     //   child: TextButton(
                     //       onPressed: () {},

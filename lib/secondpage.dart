@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spreadsheet/monumentmodel.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SecondPage extends StatefulWidget {
   MonumentModel monument;
@@ -31,44 +32,32 @@ class _SecondPageState extends State<SecondPage> {
         ),
         child:         Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                SizedBox(height: 10),
-                SizedBox(
-                  height: 10,
-                  child: TextButton(
-                    style: ButtonStyle(
-                      fixedSize: MaterialStateProperty.all(Size(10, 10)),
-                      padding: MaterialStateProperty.all(EdgeInsets.zero),
-                        alignment: Alignment.centerRight),
-                    onPressed: (){
-                      Navigator.pop(context);
-                    },
-                    child: Icon(Icons.clear, color: Colors.grey,)
-                  ),
-                ),
-              ],
-            ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(widget.monument.chinese, style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.4, color: Colors.grey, fontWeight: FontWeight.bold),),
+                Text(widget.monument.chinese, style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.width*0.4, color: Colors.grey, fontWeight: FontWeight.bold),),
                 Column(
-                  children:[Column(
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width*0.4,
-                        child: FittedBox(
-                          fit: BoxFit.fitWidth,
-                            child: Text('CatOnKnees式:', style: TextStyle(fontSize: 30, color: Color.fromRGBO(204, 204, 204, 1)),)),
-                      ),
-                        Text(widget.monument.catOnknees,style: TextStyle(fontSize: 30, color: Colors.grey), ),
-                      Text("イエール式:${widget.monument.yale}",style: TextStyle(fontSize: 20, color: Colors.grey), ),
-                      Text("粵拼: ${widget.monument.jyutpin}",style: TextStyle(fontSize: 20, color: Colors.grey), ),
-                     // if (monument.voice!="")
-                       Icon(Icons.volume_up)
-                    ],
+                  children:[SizedBox(
+                    height: MediaQuery.of(context).size.width*0.4,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width*0.4,
+
+                          child: FittedBox(
+                            fit: BoxFit.fitWidth,
+                              child: Text('CatOnKnees式:',
+                                style: TextStyle(fontSize: 19.sp, color: Color.fromRGBO(67, 67, 67, 1)),)),
+                        ),
+                          Text(widget.monument.catOnknees,style: TextStyle(fontSize: 21.sp, color:  Color.fromRGBO(102, 102, 102, 1), fontWeight: FontWeight.bold), ),
+                        Text("イエール式:${widget.monument.yale}",style: TextStyle(fontSize: 18.sp, color: Colors.grey), ),
+                        Text("粵拼: ${widget.monument.jyutpin}",style: TextStyle(fontSize: 18.sp, color: Colors.grey), ),
+                       // if (monument.voice!="")
+                       (widget.monument.voice!= "")? Icon(Icons.volume_up):Icon(Icons.volume_up)
+                      ],
+                    ),
                   ),
 
 
@@ -148,10 +137,20 @@ class _SecondPageState extends State<SecondPage> {
                         ),
                       ),
                     ),
-                    Text(widget.monument.cokVowel),
-                    Text(widget.monument.cokTips2),
-                    Text(widget.monument.cokTips3),
-                    Text(widget.monument.cokTips4),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal:20.w),
+                      child: Column(
+                        children: [
+                          TextWithPad(content: Text(widget.monument.cokVowel, style: TextStyle(fontSize: 20),)),
+                          TextWithPad(content: Text(widget.monument.cokTips1, style: TextStyle(fontSize: 16),)),
+                          TextWithPad(content: Text(widget.monument.cokTips2, style: TextStyle(color: Colors.red, fontSize: 16),)),
+
+                          TextWithPad(content: Text(widget.monument.cokTips3, style: TextStyle(fontSize: 16),)),
+                          TextWithPad(content: Text(widget.monument.cokTips4, style: TextStyle(fontSize: 16),)),
+                          Padding(padding: EdgeInsets.all(8))
+                        ],
+                      ),
+                    ),
                   ],
                 ), expanded: expanded1,
                   expansionFunc: (panelIndex, isExpanded){
@@ -167,7 +166,10 @@ class _SecondPageState extends State<SecondPage> {
                       },
                     color: Color.fromRGBO(217, 217, 217, 1),
                       contents: Column(
-                      children: [CustromTitle(title: "単語・フレーズ")]
+                      children: [
+                        TextWithPad(content: Text(widget.monument.vocab, style: TextStyle(fontSize: 16),)),
+                        Padding(padding: EdgeInsets.all(8))
+                      ]
                   )),
                     CustomBoard(
                       title: CustromTitle(title: "CatOnKneesメモ"),
@@ -176,9 +178,30 @@ class _SecondPageState extends State<SecondPage> {
                           setState((){expanded3  = (expanded3) ?  false: true;});
                         },
                         color: Color.fromRGBO(243, 230, 230, 1),
-                        contents: Column(
-                            children: []
-                        )),
+                        contents: Padding(
+                              padding: EdgeInsets.symmetric(horizontal:20.w),
+                          child: Column(
+                              children: [
+                                TextWithPad(content: Text(widget.monument.mikoTips, style: TextStyle(fontSize: 16),)),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                  if(widget.monument.link1 != "")TextButton(onPressed: ()async{
+                                    print(widget.monument.link1);
+                                    launchUrl(Uri.parse(widget.monument.link1));
+                                  },child:Text("リンク①")),
+                                  if(widget.monument.link2 != "")TextButton(onPressed: ()async{
+                                    launchUrl(Uri.parse(widget.monument.link2));
+                                  },child:Text("リンク②")),
+                                  if(widget.monument.link3 != "")TextButton(onPressed: ()async{
+                                    launchUrl(Uri.parse(widget.monument.link3));
+                                  },child:Text("リンク③")),
+                                ],),
+                                Padding(padding: EdgeInsets.all(8))
+                              ]
+                          ),
+                        )
+                    ),
                     CustomBoard(
                       title:CustromTitle(title: "音声学的解説"),
                         expanded: expanded4,
@@ -186,8 +209,16 @@ class _SecondPageState extends State<SecondPage> {
                           setState((){expanded4  = (expanded4) ?  false: true;});
                         },
                         color: Color.fromRGBO(239, 239, 239, 1),
-                        contents: Column(
-                            children: []
+                        contents: Padding(
+                          padding: EdgeInsets.symmetric(horizontal:20.w),
+                          child: Column(
+                              children: [
+                                TextWithPad(content: Text("[${widget.monument.ipa}]", style: TextStyle(fontSize: 16),)),
+                                TextWithPad(content: Text(widget.monument.phonetics, style: TextStyle(fontSize: 16),)),
+                                Padding(padding: EdgeInsets.all(8))
+
+                              ]
+                          ),
                         )),
               ],
             ),
@@ -196,6 +227,23 @@ class _SecondPageState extends State<SecondPage> {
             ],
         ),
       ),
+    );
+  }
+}
+
+class TextWithPad extends StatelessWidget {
+  const TextWithPad({
+    Key? key,
+    required this.content,
+  }) : super(key: key);
+
+  final Widget content;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 8.0.h),
+      child: content,
     );
   }
 }

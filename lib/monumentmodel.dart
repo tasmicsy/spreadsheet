@@ -101,9 +101,9 @@ class MonumentModel {
   }
 
 static List<MonumentModel> searchMonument3(List<MonumentModel> monumentList,String? firstItem, String? secondItem, String? thirdItem,
-    String? fourthItem, String? fifthItem, String? sixthItem, String?seventhItem, String?eighthItem) {
+    String? fourthItem, String? fifthItem, String? sixthItem, String?seventhItem, String?eighthItem, bool voiceItem) {
   List<MonumentModel> monumentList2 = [];
-  if(firstItem== null && secondItem==null &&thirdItem==null&&fourthItem==null&&fifthItem==null&&sixthItem == null && seventhItem == null && eighthItem == null){
+  if(firstItem== null && secondItem==null &&thirdItem==null&&fourthItem==null&&fifthItem==null&&sixthItem == null && seventhItem == null && eighthItem == null &&voiceItem == false ){
     monumentList2 =monumentList;
   }else{
     int s = 0;
@@ -116,12 +116,11 @@ static List<MonumentModel> searchMonument3(List<MonumentModel> monumentList,Stri
           &&((sixthItem == "")? monumentList[i].vowel == "":monumentList[i].vowel.contains(sixthItem??""))
           && ((seventhItem == "")? monumentList[i].end == "":monumentList[i].end.contains(seventhItem??""))
           && ((eighthItem == "")? monumentList[i].tone == "":monumentList[i].tone.contains(eighthItem??""))
+       && ((voiceItem== true && monumentList[i].voice!="")|| voiceItem==false)){
+  monumentList2.insert(s, monumentList[i]);
+  // print(monumentList2[s].yale);
+  s = s + 1;
 
-      ) {
-
-        monumentList2.insert(s, monumentList[i]);
-       // print(monumentList2[s].yale);
-        s=s+1;
       }
 
     }

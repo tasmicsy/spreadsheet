@@ -110,9 +110,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 7.0.h),
+                    padding: EdgeInsets.only(top: 6.0.h),
                     child: Text("世界初！広東語発音ひらがな表記", style: TextStyle(
-                      fontSize: 17.sp
+                      fontSize: 16.sp
                     ),),
                   ),
                   Row(
@@ -134,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       Text('広東語発音完全解説動画は'),
                       SizedBox(
-                        height: 30.h,
+                        height: 28.h,
                         width: 55.w,
                         child: TextButton(
                             onPressed: ()async {
@@ -249,9 +249,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                   vowelTmp= vowelTmp;
                                   endTmp= endTmp;
                                   toneTmp= toneTmp;
-                                  voiceTmp = true;
+                                  voiceTmp = (voiceTmp==true)? false: true;
                                 });
-                                print(voiceTmp);
+                              print(voiceTmp);
                               },color: Color.fromRGBO(186, 206, 179, 1),
                                   icon: Icons.volume_up),
                               CustomButton(onPressedFunc: (){setState((){
@@ -290,66 +290,36 @@ class _MyHomePageState extends State<MyHomePage> {
                 .size
                 .height * 0.32,
                       child: Center(child: CircularProgressIndicator())),
-                  Container(
-                    height: MediaQuery
-                        .of(context)
-                        .size
-                        .height * 0.075,
-                    child:
-                    (_isBannerAdReady)?SizedBox(
+                  (_isBannerAdReady)?SizedBox(
             width: _bannerAd.size.width.toDouble(),
             height: _bannerAd.size.height.toDouble(),
             child: AdWidget(ad: _bannerAd),
             ):
-                    SizedBox(width: 30, height: 47),
-                    // Card(
-                    //   child: TextButton(
-                    //       onPressed: () {},
-                    //       child: Row(
-                    //           mainAxisAlignment: MainAxisAlignment
-                    //               .spaceBetween,
-                    //           children: [
-                    //             Column(
-                    //               mainAxisAlignment: MainAxisAlignment.center,
-                    //               children: [
-                    //                 Text("YouTube"),
-                    //                 Image.asset("assets/catonkneeslogo2.png",
-                    //                     height: MediaQuery
-                    //                     .of(context)
-                    //                     .size
-                    //                     .height * 0.01 ),
-                    //               ],
-                    //             ),
-                    //             Container(
-                    //                 width: MediaQuery
-                    //                     .of(context)
-                    //                     .size
-                    //                     .width * 0.3,
-                    //                 child: Text(
-                    //                     "独学で広東語を学んだ日本人Mikoによる関東後・香港情報を無料配信チャンネル！",style: TextStyle(fontSize: 10.sp),)),
-                    //             Container(
-                    //                 width: MediaQuery
-                    //                     .of(context)
-                    //                     .size
-                    //                     .width * 0.2,
-                    //                 child: Text("広東語マスター動画",style: TextStyle(fontSize: 10.sp))),
-                    //             Container(
-                    //                 width: MediaQuery
-                    //                     .of(context)
-                    //                     .size
-                    //                     .width * 0.1,
-                    //                 child: Text("チャンネル登録",style: TextStyle(fontSize: 10.sp)))
-                    //           ]
-                    //       )
-                    //   ),
-                    // ),
-                  ),
+                  SizedBox(width: 30, height: 47),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15.0.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text("お問い合わせ"), Text("catonknees.com")],
+                    padding: EdgeInsets.symmetric(horizontal: 20.0.h),
+                    child: SizedBox(
+                      height: 32,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [TextButton(
+                            style: ButtonStyle(
+                                foregroundColor: MaterialStateProperty.all(Colors.brown)
+                            ),
+                          onPressed: (){
+                            launchUrl(Uri.parse('mailto:noahmiyako@gmail.com?subject=お問い合せ&body=お問合せ内容を書いてください。'));
+                          },
+                            child: Text("お問い合わせ")), TextButton(
 
+                            onPressed:(){
+                              launchUrl(Uri.parse("https://catonknees.com/"));
+                            },
+                            style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all(Colors.brown)
+                            ),
+            child: Text("catonknees.com"))],
+
+                      ),
                     ),
                   )
                 ],

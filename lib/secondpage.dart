@@ -141,12 +141,12 @@ class _SecondPageState extends State<SecondPage> {
                       padding: EdgeInsets.symmetric(horizontal:20.w),
                       child: Column(
                         children: [
-                          TextWithPad(content: Text(widget.monument.cokVowel, style: TextStyle(fontSize: 20),)),
-                          TextWithPad(content: Text(widget.monument.cokTips1, style: TextStyle(fontSize: 16),)),
-                          TextWithPad(content: Text(widget.monument.cokTips2, style: TextStyle(color: Colors.red, fontSize: 16),)),
+                          if(widget.monument.cokVowel!="")TextWithPad(content: Text(widget.monument.cokVowel, style: TextStyle(fontSize: 20),)),
+                          if(widget.monument.cokTips1!="")TextWithPad(content: Text(widget.monument.cokTips1, style: TextStyle(fontSize: 16),)),
+                          if(widget.monument.cokTips2!="")TextWithPad(content: Text(widget.monument.cokTips2, style: TextStyle(color: Colors.red, fontSize: 16),)),
 
-                          TextWithPad(content: Text(widget.monument.cokTips3, style: TextStyle(fontSize: 16),)),
-                          TextWithPad(content: Text(widget.monument.cokTips4, style: TextStyle(fontSize: 16),)),
+                          if(widget.monument.cokTips3!="")TextWithPad(content: Text(widget.monument.cokTips3, style: TextStyle(fontSize: 16),)),
+                          if(widget.monument.cokTips4!="")TextWithPad(content: Text(widget.monument.cokTips4, style: TextStyle(fontSize: 16),)),
                           Padding(padding: EdgeInsets.all(8))
                         ],
                       ),
@@ -158,7 +158,8 @@ class _SecondPageState extends State<SecondPage> {
                     print(expanded1);});
                   },
                 ),
-                  CustomBoard(
+                  if(widget.monument.vocab!= "")
+                    CustomBoard(
                     title: CustromTitle(title: "単語・フレーズ"),
                       expanded: expanded2,
                       expansionFunc: (panelIndex, isExpanded){
@@ -171,7 +172,8 @@ class _SecondPageState extends State<SecondPage> {
                         Padding(padding: EdgeInsets.all(8))
                       ]
                   )),
-                    CustomBoard(
+                if(!(widget.monument.mikoTips== "" &&widget.monument.link1== ""&& widget.monument.link2== ""&& widget.monument.link3== ""))
+                  CustomBoard(
                       title: CustromTitle(title: "CatOnKneesメモ"),
                         expanded: expanded3,
                         expansionFunc: (panelIndex, isExpanded){
@@ -182,7 +184,7 @@ class _SecondPageState extends State<SecondPage> {
                               padding: EdgeInsets.symmetric(horizontal:20.w),
                           child: Column(
                               children: [
-                                TextWithPad(content: Text(widget.monument.mikoTips, style: TextStyle(fontSize: 16),)),
+                                if(widget.monument.mikoTips!="")TextWithPad(content: Text(widget.monument.mikoTips, style: TextStyle(fontSize: 16),)),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
@@ -202,7 +204,7 @@ class _SecondPageState extends State<SecondPage> {
                           ),
                         )
                     ),
-                    CustomBoard(
+                if (!(widget.monument.ipa==""&&widget.monument.phonetics==""))CustomBoard(
                       title:CustromTitle(title: "音声学的解説"),
                         expanded: expanded4,
                         expansionFunc: (panelIndex, isExpanded){
@@ -213,8 +215,8 @@ class _SecondPageState extends State<SecondPage> {
                           padding: EdgeInsets.symmetric(horizontal:20.w),
                           child: Column(
                               children: [
-                                TextWithPad(content: Text("[${widget.monument.ipa}]", style: TextStyle(fontSize: 16),)),
-                                TextWithPad(content: Text(widget.monument.phonetics, style: TextStyle(fontSize: 16),)),
+                                if(widget.monument.ipa!="")TextWithPad(content: Text("[${widget.monument.ipa}]", style: TextStyle(fontSize: 16),)),
+                                if(widget.monument.phonetics!="")TextWithPad(content: Text(widget.monument.phonetics, style: TextStyle(fontSize: 16),)),
                                 Padding(padding: EdgeInsets.all(8))
 
                               ]

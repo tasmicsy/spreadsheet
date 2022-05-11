@@ -2,10 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key> SKAdNetworkItems</key>
+	<key>SKAdNetworkItems</key>
 	<array>
-	    <key>SKAdNetworkIdentifier</key>
-		<string>cstr6suwn9.skadnetwork</string>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>cstr6suwn9.skadnetwork</string>
+		</dict>
 	</array>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-5943388097691889~6794585398</string>

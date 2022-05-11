@@ -168,7 +168,7 @@ class _SecondPageState extends State<SecondPage> {
                     color: Color.fromRGBO(217, 217, 217, 1),
                       contents: Column(
                       children: [
-                        TextWithPad(content: Text(widget.monument.vocab, style: TextStyle(fontSize: 16),)),
+                        TextWithPad(content: Text(widget.monument.vocab,textAlign: TextAlign.center, style: TextStyle(fontSize: 16),)),
                         Padding(padding: EdgeInsets.all(8))
                       ]
                   )),

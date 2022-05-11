@@ -111,9 +111,36 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(top: 6.0.h),
-                    child: Text("世界初！広東語発音ひらがな表記", style: TextStyle(
-                      fontSize: 16.sp
-                    ),),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 15,
+                          width: 15,
+                          child: IconButton(onPressed: (){
+                            showDialog(context: context, builder: (context){
+                              return SimpleDialog(
+
+                                  children: [
+                                    TextButton(onPressed: (){}, child: Text("プライバシーポリシー")),
+                                    TextButton(onPressed: (){}, child: Text("利用規約")),
+                                    TextButton(onPressed: (){}, child: Text("お問合せ")),
+                                    TextButton(onPressed: (){}, child: Text("ホームページ"))
+                                  ],
+
+                              );
+                            });
+                          },
+                              padding: EdgeInsets.zero,
+                              icon: Icon(Icons.dehaze, size: 20,)),
+                        ),
+                        Text("世界初！広東語発音ひらがな表記", style: TextStyle(
+                          fontSize: 16.sp
+                        ),),
+                        SizedBox(height: 15, width: 15,),
+                      ],
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

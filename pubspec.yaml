@@ -28,7 +28,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 
 flutter_icons:
-  image_path: "assets/AppIcon.jpg"
+  image_path: "assets/COKAppIconlogo.jpg"
   android: true
   ios: true
 

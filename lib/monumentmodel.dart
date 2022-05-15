@@ -103,6 +103,7 @@ class MonumentModel {
 static List<MonumentModel> searchMonument3(List<MonumentModel> monumentList,String? firstItem, String? secondItem, String? thirdItem,
     String? fourthItem, String? fifthItem, String? sixthItem, String?seventhItem, String?eighthItem, bool voiceItem) {
   List<MonumentModel> monumentList2 = [];
+
   if(firstItem== null && secondItem==null &&thirdItem==null&&fourthItem==null&&fifthItem==null&&sixthItem == null && seventhItem == null && eighthItem == null &&voiceItem == false ){
     monumentList2 =monumentList;
   }else{
@@ -112,10 +113,10 @@ static List<MonumentModel> searchMonument3(List<MonumentModel> monumentList,Stri
           && (monumentList[i].catOnknees.contains(secondItem??""))
            && (monumentList[i].yale.contains(thirdItem??""))
           && (monumentList[i].jyutpin.contains(fourthItem??""))
-          && (monumentList[i].initial.contains(fifthItem??""))
-          &&(monumentList[i].vowel.contains(sixthItem??""))
-          && (monumentList[i].end.contains(seventhItem??""))
-          && (monumentList[i].tone.contains(eighthItem??""))
+          && (fifthItem!= null ?(monumentList[i].initial == fifthItem):(monumentList[i].initial.contains("")))
+          &&(sixthItem!= null ?(monumentList[i].vowel == sixthItem):monumentList[i].vowel.contains(""))
+          && (seventhItem!= null ? (monumentList[i].end == seventhItem):(monumentList[i].end.contains("")))
+          &&( eighthItem != null ?(monumentList[i].tone == eighthItem): (monumentList[i].tone.contains("")))
        && ((voiceItem== true && monumentList[i].voice!="")|| voiceItem==false)){
   monumentList2.insert(s, monumentList[i]);
   // print(monumentList2[s].yale);

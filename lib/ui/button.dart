@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   void Function() onPressedFunc;
   Color color;
-  IconData icon;
+  Widget name;
   CustomButton({
     required this.onPressedFunc,
     required this.color,
-    required this.icon,
+    required this.name,
     Key? key,
   }) : super(key: key);
 
@@ -28,6 +28,6 @@ textStyle: MaterialStateProperty.all<TextStyle>(TextStyle(fontWeight: FontWeight
         ),
       onPressed: onPressedFunc,child: SizedBox(
         width:MediaQuery.of(context).size.width*0.3,
-        child: Icon(icon)),);
+        child: name),);
   }
 }

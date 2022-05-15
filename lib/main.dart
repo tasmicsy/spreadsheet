@@ -280,15 +280,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                   voiceTmp = (voiceTmp==true)? false: true;
                                 });
                               //print(voiceTmp);
-                              },color: (voiceTmp== null || voiceTmp == false) ? Color.fromRGBO(186, 206, 179, 1): Colors.green,
-                                  name: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(Icons.volume_up),
-                                      if  (voiceTmp== null || voiceTmp == false)  Text("OFF"),
-                                      if (voiceTmp == true) Text("ON")
-                                    ],
-                                  )),
+                              },color: (voiceTmp== null || voiceTmp == false) ? Colors.grey: Color.fromRGBO(186, 206, 179, 1),
+                                  name: Icon(Icons.volume_up)),
                               CustomButton(onPressedFunc: (){setState((){
     pickerValue = [null,null,null,null];
     _editController1.clear();

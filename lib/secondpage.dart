@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:spreadsheet/monumentmodel.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spreadsheet/ui/monumentlst.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SecondPage extends StatefulWidget {
@@ -38,14 +39,20 @@ class _SecondPageState extends State<SecondPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(widget.monument.chinese, style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width*0.4, color: Colors.grey, fontWeight: FontWeight.bold),),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width*0.4,
+                  child: FittedBox(
+                    child: Text(widget.monument.chinese, style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.width*0.4, color: Colors.grey, fontWeight: FontWeight.bold),),
+                  ),
+                ),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children:[SizedBox(
                     height: MediaQuery.of(context).size.width*0.4,
                     child: Column(
                       children: [
-                        SizedBox(
+                       if (widget.monument.catOnknees!= "")SizedBox(
                           width: MediaQuery.of(context).size.width*0.4,
 
                           child: FittedBox(
@@ -54,8 +61,8 @@ class _SecondPageState extends State<SecondPage> {
                                 style: TextStyle(fontSize: 19.sp, color: Color.fromRGBO(67, 67, 67, 1)),)),
                         ),
                           Text(widget.monument.catOnknees,style: TextStyle(fontSize: 20.sp, color:  Color.fromRGBO(102, 102, 102, 1), fontWeight: FontWeight.bold), ),
-                        Text("イエール式:${widget.monument.yale}",style: TextStyle(fontSize: 18.sp, color: Colors.grey), ),
-                        Text("粵拼: ${widget.monument.jyutpin}",style: TextStyle(fontSize: 18.sp, color: Colors.grey), ),
+                        if (widget.monument.yale!= "")Text("イエール式:${widget.monument.yale}",style: TextStyle(fontSize: 18.sp, color: Colors.grey), ),
+                        if (widget.monument.jyutpin!= "") Text("粵拼: ${widget.monument.jyutpin}",style: TextStyle(fontSize: 18.sp, color: Colors.grey), ),
                        // if (monument.voice!="")
                        if (widget.monument.voice!= "") SizedBox(
                          height: 25.h,
@@ -91,12 +98,13 @@ class _SecondPageState extends State<SecondPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                CustomBoard(
-                  title:  CustromTitle(title: "日本人向け発音のコツ"),
+                if(widget.monument.initial!= ""|| widget.monument.vowel!= ""||widget.monument.end!= ""||widget.monument.tone!= ""
+                ||widget.monument.cokTips1!= ""||widget.monument.cokTips2!= ""||widget.monument.cokTips3!= ""||widget.monument.cokTips4!= "")CustomBoard(
+                  title:  CustromTitle(title: (widget.monument.boxTitle1 == "")? "日本人向け発音のコツ": widget.monument.boxTitle1),
                   color: Color.fromRGBO(239, 239, 239, 1),contents: Column(
                   children: [
 
-                    Padding(
+                    if(widget.monument.initial!= ""|| widget.monument.vowel!= ""||widget.monument.end!= ""||widget.monument.tone!= "")Padding(
                       padding: EdgeInsets.symmetric(vertical:8.0, horizontal: MediaQuery.of(context).size.width*0.04),
                       child: Container(
                         decoration: BoxDecoration(
@@ -179,7 +187,7 @@ class _SecondPageState extends State<SecondPage> {
                 ),
                   if(widget.monument.vocab!= "")
                     CustomBoard(
-                    title: CustromTitle(title: "単語・フレーズ"),
+                    title: CustromTitle(title: (widget.monument.boxTitle2 == "")? "単語・フレーズ": widget.monument.boxTitle2),
                       expanded: expanded2,
                       expansionFunc: (panelIndex, isExpanded){
                         setState((){expanded2  = (expanded2) ?  false: true;});
@@ -193,7 +201,7 @@ class _SecondPageState extends State<SecondPage> {
                   )),
                 if(!(widget.monument.mikoTips== "" &&widget.monument.link1== ""&& widget.monument.link2== ""&& widget.monument.link3== ""))
                   CustomBoard(
-                      title: CustromTitle(title: "CatOnKneesメモ"),
+                      title: CustromTitle(title: (widget.monument.boxTitle3 == "")? "CatOnKneesメモ": widget.monument.boxTitle3),
                         expanded: expanded3,
                         expansionFunc: (panelIndex, isExpanded){
                           setState((){expanded3  = (expanded3) ?  false: true;});
@@ -224,7 +232,7 @@ class _SecondPageState extends State<SecondPage> {
                         )
                     ),
                 if (!(widget.monument.ipa==""&&widget.monument.phonetics==""))CustomBoard(
-                      title:CustromTitle(title: "音声学的解説"),
+                      title:CustromTitle(title: (widget.monument.boxTitle4 == "")? "音声学的解説": widget.monument.boxTitle4),
                         expanded: expanded4,
                         expansionFunc: (panelIndex, isExpanded){
                           setState((){expanded4  = (expanded4) ?  false: true;});

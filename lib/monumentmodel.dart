@@ -24,6 +24,10 @@ class MonumentModel {
   String link3;
   String ipa;
   String phonetics;
+  String boxTitle1;
+  String boxTitle2;
+  String boxTitle3;
+  String boxTitle4;
 
   MonumentModel({
     required this.chinese,
@@ -48,7 +52,11 @@ class MonumentModel {
     required this.link2,
     required this.link3,
     required this.ipa,
-    required this.phonetics
+    required this.phonetics,
+    required this.boxTitle1,
+    required this.boxTitle2,
+    required this.boxTitle3,
+    required this.boxTitle4
   });
 
   factory MonumentModel.fromMap(Map<String, dynamic> json) {
@@ -74,9 +82,13 @@ class MonumentModel {
         mikoTips: json['MikoTips'].toString(),
         link1: json['Link1'].toString(),
         link2: json['Link2'].toString(),
-        link3: json['link3'].toString(),
+        link3: json['Link3'].toString(),
         ipa: json['IPA'].toString(),
         phonetics: json['Phonetics'].toString(),
+      boxTitle1: json['BoxTitle1'].toString(),
+      boxTitle2: json['BoxTitle2'].toString(),
+      boxTitle3: json['BoxTitle3'].toString(),
+      boxTitle4: json['BoxTitle4'].toString(),
     );
   }
 
@@ -91,7 +103,9 @@ class MonumentModel {
     //print('herehere');
     final response = await http.get(
         Uri.parse(
-            'https://script.google.com/macros/s/AKfycbyuCIGsd8eJqGnTQwXD3RQlqZli5fFM8-XAE6XXyPIMs5BxAGPd9oryqntNL4iDLHiS9A/exec'));
+            'https://script.google.com/macros/s/AKfycbw3-dXzsni7kGSt_2rhFIj6E01S_NIWEsJmDSx8DpVFb7kpXUC5qiikihhlRUoax7TUlQ/exec'
+           // 'https://script.google.com/macros/s/AKfycbyuCIGsd8eJqGnTQwXD3RQlqZli5fFM8-XAE6XXyPIMs5BxAGPd9oryqntNL4iDLHiS9A/exec'
+        ));
     if (response.statusCode == 200) {
      // print(response.body);
       return decodeMonument(response.body);

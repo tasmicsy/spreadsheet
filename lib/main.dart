@@ -192,6 +192,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [
                         CustomTextField(editController: _editController1,label: "漢字 Chinese", onChangedFunc: (newText){
                           chineseTmp = newText;
+                          print(newText);
                           setState((){
                             chineseTmp = newText;
                             catOnKneesTmp= catOnKneesTmp;
@@ -334,7 +335,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 foregroundColor: MaterialStateProperty.all(Colors.brown)
                             ),
                           onPressed: (){
-                            launchUrl(Uri.parse('mailto:noahmiyako@gmail.com?subject=お問い合せ&body=お問合せ内容を書いてください。'));
+                            launchUrl(Uri.parse('mailto:infocatonknees@gmail.com?subject=お問い合せ&body=お問合せ内容を書いてください。'));
                           },
                             child: Text("お問い合わせ")), TextButton(
 

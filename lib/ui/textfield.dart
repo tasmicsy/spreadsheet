@@ -18,6 +18,7 @@ class CustomTextField extends StatelessWidget {
       child: Container(
         height:35.h,
         child: TextField(
+          cursorColor: Colors.brown,
           controller: editController,
           onChanged: onChangedFunc,
           decoration: InputDecoration(

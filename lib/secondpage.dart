@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:spreadsheet/monumentmodel.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,6 +14,7 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
+  Color colorvolume = Colors.black;
   bool expanded1 = false;
 
   bool expanded2 = false;
@@ -51,11 +53,28 @@ class _SecondPageState extends State<SecondPage> {
                               child: Text('CatOnKnees式:',
                                 style: TextStyle(fontSize: 19.sp, color: Color.fromRGBO(67, 67, 67, 1)),)),
                         ),
-                          Text(widget.monument.catOnknees,style: TextStyle(fontSize: 21.sp, color:  Color.fromRGBO(102, 102, 102, 1), fontWeight: FontWeight.bold), ),
+                          Text(widget.monument.catOnknees,style: TextStyle(fontSize: 20.sp, color:  Color.fromRGBO(102, 102, 102, 1), fontWeight: FontWeight.bold), ),
                         Text("イエール式:${widget.monument.yale}",style: TextStyle(fontSize: 18.sp, color: Colors.grey), ),
                         Text("粵拼: ${widget.monument.jyutpin}",style: TextStyle(fontSize: 18.sp, color: Colors.grey), ),
                        // if (monument.voice!="")
-                       (widget.monument.voice!= "")? Icon(Icons.volume_up):Icon(Icons.volume_up)
+                       if (widget.monument.voice!= "") SizedBox(
+                         height: 25.h,
+                             child: Center(
+                               child: TextButton(
+                                 style: ButtonStyle(
+                                   alignment: Alignment.topCenter,
+                                   overlayColor: MaterialStateProperty.all(Colors.white,)
+                                 ),
+                               onPressed: ()async{
+                                 setState((){colorvolume = Colors.grey;});
+                                 final player = AudioPlayer();
+                                 await player.setUrl(widget.monument.voice);
+                                 player.play();
+                                 setState((){colorvolume = Colors.black;});
+                               },
+                               child:Icon(Icons.volume_up, color: colorvolume)),
+                             ),
+                           )
                       ],
                     ),
                   ),

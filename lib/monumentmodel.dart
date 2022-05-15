@@ -108,14 +108,14 @@ static List<MonumentModel> searchMonument3(List<MonumentModel> monumentList,Stri
   }else{
     int s = 0;
     for(var i=0;i<monumentList.length;i++) {
-      if (((firstItem == "")? monumentList[i].chinese == "":monumentList[i].chinese.contains(firstItem??""))
-          && ((secondItem == "")? monumentList[i].catOnknees == "":monumentList[i].catOnknees.contains(secondItem??""))
-           && ((thirdItem == "")? monumentList[i].yale == "":monumentList[i].yale.contains(thirdItem??""))
-          && ((fourthItem == "")? monumentList[i].jyutpin == "":monumentList[i].jyutpin.contains(fourthItem??""))
-          && ((fifthItem == "")? monumentList[i].initial == "":monumentList[i].initial.contains(fifthItem??""))
-          &&((sixthItem == "")? monumentList[i].vowel == "":monumentList[i].vowel.contains(sixthItem??""))
-          && ((seventhItem == "")? monumentList[i].end == "":monumentList[i].end.contains(seventhItem??""))
-          && ((eighthItem == "")? monumentList[i].tone == "":monumentList[i].tone.contains(eighthItem??""))
+      if ((monumentList[i].chinese.contains(firstItem??""))
+          && (monumentList[i].catOnknees.contains(secondItem??""))
+           && (monumentList[i].yale.contains(thirdItem??""))
+          && (monumentList[i].jyutpin.contains(fourthItem??""))
+          && (monumentList[i].initial.contains(fifthItem??""))
+          &&(monumentList[i].vowel.contains(sixthItem??""))
+          && (monumentList[i].end.contains(seventhItem??""))
+          && (monumentList[i].tone.contains(eighthItem??""))
        && ((voiceItem== true && monumentList[i].voice!="")|| voiceItem==false)){
   monumentList2.insert(s, monumentList[i]);
   // print(monumentList2[s].yale);

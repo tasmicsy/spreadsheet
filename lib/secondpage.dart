@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:spreadsheet/monumentmodel.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:spreadsheet/ui/monumentlst.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SecondPage extends StatefulWidget {
@@ -15,6 +14,7 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
+  final player = AudioPlayer();
   Color colorvolume = Colors.black;
   bool expanded1 = false;
 
@@ -74,7 +74,7 @@ class _SecondPageState extends State<SecondPage> {
                                  ),
                                onPressed: ()async{
                                  setState((){colorvolume = Colors.grey;});
-                                 final player = AudioPlayer();
+
                                  await player.setUrl(widget.monument.voice);
                                  player.play();
                                  setState((){colorvolume = Colors.black;});

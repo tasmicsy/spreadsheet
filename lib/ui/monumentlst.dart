@@ -56,6 +56,12 @@ class _monumentListState extends State<monumentList> {
                     margin: EdgeInsets.symmetric(horizontal:5.w, vertical: 2.h),
                     color: (index%2 == 0)? Colors.white: Colors.grey.shade100,
                     child: ListTile(
+                      onTap: () {
+                        showDialog(context: context, builder: (context) {
+                          return SecondPage(
+                              monument: widget.monumentList2[index]);
+                        });
+                      },
                       title: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8.0.w),
                         child: Row(
@@ -117,27 +123,27 @@ class _monumentListState extends State<monumentList> {
                                             foregroundColor: MaterialStateProperty.all<Color>(colorvolume)
                                         ),
                                         onPressed: ()async {
-                                          setState((){colorvolume = Colors.grey;});
+
 
                                           await player.setUrl(widget.monumentList2[index].voice);
                                           player.play();
-                                          setState((){colorvolume = Colors.black;});
+
                                         },
                                         child: Icon(Icons.volume_up, size: 30.sp,)
                                     ),
                                   ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width*0.1,
-                                    child: TextButton(onPressed: (){
-                                      showDialog(context: context, builder: (context){
-                                        return SecondPage(monument: widget.monumentList2[index]);
-                                      });
-                                    },
-                                        style: ButtonStyle(
-                                            foregroundColor: MaterialStateProperty.all<Color>(Colors.black54)
-                                        ),
-                                        child: Icon(Icons.info_outlined, size: 30.sp,)),
-                                  ),
+                                  // SizedBox(
+                                  //   width: MediaQuery.of(context).size.width*0.1,
+                                  //   child: TextButton(onPressed: (){
+                                  //     showDialog(context: context, builder: (context){
+                                  //       return SecondPage(monument: widget.monumentList2[index]);
+                                  //     });
+                                  //   },
+                                  //       style: ButtonStyle(
+                                  //           foregroundColor: MaterialStateProperty.all<Color>(Colors.black54)
+                                  //       ),
+                                  //       child: Icon(Icons.info_outlined, size: 30.sp,)),
+                                  // ),
 
                                 ],
                               ),

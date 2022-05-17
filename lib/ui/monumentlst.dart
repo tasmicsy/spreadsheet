@@ -62,10 +62,9 @@ class _monumentListState extends State<monumentList> {
                               monument: widget.monumentList2[index]);
                         });
                       },
-                      title: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0.w),
+                      title: Center(
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
@@ -91,7 +90,7 @@ class _monumentListState extends State<monumentList> {
                               ),
                             ),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width *0.3,
+                              width: MediaQuery.of(context).size.width *0.4,
                               child: Padding(
                                 padding: EdgeInsets.all(8.0.w),
                                 child: Text(widget.monumentList2[index].catOnknees,
@@ -112,42 +111,19 @@ class _monumentListState extends State<monumentList> {
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width*0.2,
-                              child: Row(
-                                children: [
-                                  if (widget.monumentList2[index].voice != "")SizedBox(
-                                    width: MediaQuery.of(context).size.width*0.1,
-                                    child: TextButton(
-                                        style: ButtonStyle(
-                                            foregroundColor: MaterialStateProperty.all<Color>(colorvolume)
-                                        ),
-                                        onPressed: ()async {
-
-
-                                          await player.setUrl(widget.monumentList2[index].voice);
-                                          player.play();
-
-                                        },
-                                        child: Icon(Icons.volume_up, size: 30.sp,)
-                                    ),
-                                  ),
-                                  // SizedBox(
-                                  //   width: MediaQuery.of(context).size.width*0.1,
-                                  //   child: TextButton(onPressed: (){
-                                  //     showDialog(context: context, builder: (context){
-                                  //       return SecondPage(monument: widget.monumentList2[index]);
-                                  //     });
-                                  //   },
-                                  //       style: ButtonStyle(
-                                  //           foregroundColor: MaterialStateProperty.all<Color>(Colors.black54)
-                                  //       ),
-                                  //       child: Icon(Icons.info_outlined, size: 30.sp,)),
-                                  // ),
-
-                                ],
-                              ),
-                            ),
+                           if (widget.monumentList2[index].voice != "")SizedBox(
+                             width: MediaQuery.of(context).size.width*0.15,
+                             child: TextButton(
+                                 style: ButtonStyle(
+                                     foregroundColor: MaterialStateProperty.all<Color>(colorvolume)
+                                 ),
+                                 onPressed: ()async {
+                                   await player.setUrl(widget.monumentList2[index].voice);
+                                   player.play();
+                                 },
+                                 child: Icon(Icons.volume_up, size: 30.sp,)
+                             ),
+                           ),
                           ],
                         ),
                       ),

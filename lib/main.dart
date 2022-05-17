@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:share/share.dart';
 import 'package:spreadsheet/ad_helper.dart';
 import 'package:spreadsheet/data/dropdownitems.dart';
 import 'package:spreadsheet/firebase_options.dart';
@@ -123,10 +124,21 @@ class _MyHomePageState extends State<MyHomePage> {
                               return SimpleDialog(
 
                                   children: [
-                                    TextButton(onPressed: (){}, child: Text("プライバシーポリシー")),
-                                    TextButton(onPressed: (){}, child: Text("利用規約")),
-                                    TextButton(onPressed: (){}, child: Text("お問合せ")),
-                                    TextButton(onPressed: (){}, child: Text("ホームページ"))
+                                    TextButton(onPressed: (){
+                                      launchUrl(Uri.parse("https://catonknees.com/privacy-policy-tc/")) ;
+                                    }, child: Text("プライバシーポリシー")),
+                                    TextButton(onPressed: (){
+                                      launchUrl(Uri.parse("https://www.freeprivacypolicy.com/live/fee39dae-6962-4722-a07d-1e71c92801d7"));
+                                    }, child: Text("利用規約")),
+                                    TextButton(onPressed: (){
+                                      launchUrl(Uri.parse('mailto:infocatonknees@gmail.com?subject=お問い合せ&body=お問合せ内容を書いてください。'));
+                                    }, child: Text("お問合せ")),
+                                    TextButton(onPressed: (){
+                                      launchUrl(Uri.parse("https://catonknees.com/"));
+                                    }, child: Text("ホームページ")),
+                                    TextButton(onPressed: (){
+                                      Share.share("シェアします");
+                                    }, child: Text("シェアする")),
                                   ],
 
                               );
@@ -138,7 +150,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         Text("世界初！広東語発音ひらがな表記", style: TextStyle(
                           fontSize: 16.sp
                         ),),
-                        SizedBox(height: 15, width: 15,),
+                        SizedBox(height: 15, width: 15,
+                        child: IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: (){
+                            Share.share("シェアします");
+                          },
+                          icon: Icon(Icons.ios_share_outlined),
+                        ),),
                       ],
                     ),
                   ),
@@ -324,32 +343,32 @@ class _MyHomePageState extends State<MyHomePage> {
             child: AdWidget(ad: _bannerAd),
             ):
                   SizedBox(width: 30, height: 47),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0.h),
-                    child: SizedBox(
-                      height: 32,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [TextButton(
-                            style: ButtonStyle(
-                                foregroundColor: MaterialStateProperty.all(Colors.brown)
-                            ),
-                          onPressed: (){
-                            launchUrl(Uri.parse('mailto:infocatonknees@gmail.com?subject=お問い合せ&body=お問合せ内容を書いてください。'));
-                          },
-                            child: Text("お問い合わせ")), TextButton(
-
-                            onPressed:(){
-                              launchUrl(Uri.parse("https://catonknees.com/"));
-                            },
-                            style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all(Colors.brown)
-                            ),
-            child: Text("catonknees.com"))],
-
-                      ),
-                    ),
-                  )
+            //       Padding(
+            //         padding: EdgeInsets.symmetric(horizontal: 20.0.h),
+            //         child: SizedBox(
+            //           height: 32,
+            //           child: Row(
+            //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //             children: [TextButton(
+            //                 style: ButtonStyle(
+            //                     foregroundColor: MaterialStateProperty.all(Colors.brown)
+            //                 ),
+            //               onPressed: (){
+            //                 launchUrl(Uri.parse('mailto:infocatonknees@gmail.com?subject=お問い合せ&body=お問合せ内容を書いてください。'));
+            //               },
+            //                 child: Text("お問い合わせ")), TextButton(
+            //
+            //                 onPressed:(){
+            //                   launchUrl(Uri.parse("https://catonknees.com/"));
+            //                 },
+            //                 style: ButtonStyle(
+            //                   foregroundColor: MaterialStateProperty.all(Colors.brown)
+            //                 ),
+            // child: Text("catonknees.com"))],
+            //
+            //           ),
+            //         ),
+            //       )
                 ],
               ),
             );

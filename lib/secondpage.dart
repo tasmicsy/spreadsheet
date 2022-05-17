@@ -168,7 +168,30 @@ class _SecondPageState extends State<SecondPage> {
                       padding: EdgeInsets.symmetric(horizontal:20.w),
                       child: Column(
                         children: [
-                          if(widget.monument.cokVowel!="")TextWithPad(content: Text(widget.monument.cokVowel, style: TextStyle(fontSize: 20),)),
+                          if(widget.monument.cokVowel!="")
+                            Column(
+
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    TextWithPad(content: Text(widget.monument.cokInitial, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                                    TextWithPad(content: Text("+", style: TextStyle(fontSize: 20),)),
+                                    TextWithPad(content: Text(widget.monument.cokVowel, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                                    TextWithPad(content: Text("+", style: TextStyle(fontSize: 20),)),
+                                    TextWithPad(content: Text(widget.monument.cokEnd, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    TextWithPad(content: Text("=   ", style: TextStyle(fontSize: 20),)),
+                                    TextWithPad(content: Text(widget.monument.catOnknees, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                                  ],
+                                )
+                              ],
+                            ),
+
                           if(widget.monument.cokTips1!="")TextWithPad(content: Text(widget.monument.cokTips1, style: TextStyle(fontSize: 16),)),
                           if(widget.monument.cokTips2!="")TextWithPad(content: Text(widget.monument.cokTips2, style: TextStyle(color: Colors.red, fontSize: 16),)),
 

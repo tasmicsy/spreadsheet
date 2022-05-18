@@ -114,11 +114,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: EdgeInsets.only(top: 6.0.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          height: 15,
-                          width: 15,
+                          height: 16.h,
+                          width: 15.w,
                           child: IconButton(onPressed: (){
                             showDialog(context: context, builder: (context){
                               return SimpleDialog(
@@ -145,18 +145,18 @@ class _MyHomePageState extends State<MyHomePage> {
                             });
                           },
                               padding: EdgeInsets.zero,
-                              icon: Icon(Icons.dehaze, size: 20,)),
+                              icon: Icon(Icons.dehaze, size: 25.sp,)),
                         ),
                         Text("世界初！広東語発音ひらがな表記", style: TextStyle(
                           fontSize: 16.sp
                         ),),
-                        SizedBox(height: 15, width: 15,
+                        SizedBox(height: 16.h, width: 15.w,
                         child: IconButton(
                           padding: EdgeInsets.zero,
                           onPressed: (){
                             Share.share("シェアします");
                           },
-                          icon: Icon(Icons.ios_share_outlined),
+                          icon: Icon(Icons.ios_share_outlined, size: 20.sp,),
                         ),),
                       ],
                     ),
@@ -175,33 +175,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: FittedBox(child: Text(" 式", style: TextStyle(fontSize: 40.sp),))),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('広東語発音完全解説動画は'),
-                      SizedBox(
-                        height: 28.h,
-                        width: 55.w,
-                        child: TextButton(
-                            onPressed: ()async {
-                              launchUrl(Uri.parse('https://www.youtube.com/c/catonknees'));
-                            },
-                            style: ButtonStyle(
-                              alignment: Alignment.topLeft
-                            ),
 
-                            child: Text('こちら',style: TextStyle(
-                              decoration: TextDecoration.underline,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.brown),textAlign: TextAlign.start,)),
-                      )
-                    ],
-                  ),
                   SizedBox(
                     height: MediaQuery
                         .of(context)
                         .size
-                        .height * 0.35,
+                        .height * 0.4,
                     width: MediaQuery
                         .of(context)
                         .size
@@ -209,6 +188,31 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('広東語発音完全解説動画は'),
+                            SizedBox(
+                              height: 28.h,
+                              width: 55.w,
+                              child: TextButton(
+                                  onPressed: ()async {
+                                    launchUrl(Uri.parse('https://www.youtube.com/c/catonknees'));
+                                  },
+                                  style: ButtonStyle(
+                                      alignment: Alignment.center,
+                                    padding: MaterialStateProperty.all(EdgeInsets.zero)
+                                  ),
+                                  
+                                  child: Text('こちら',style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.brown,
+                                    fontSize: 13.sp
+                                  ),textAlign: TextAlign.start,)),
+                            )
+                          ],
+                        ),
                         CustomTextField(editController: _editController1,label: "漢字 Chinese", onChangedFunc: (newText){
                           chineseTmp = newText;
                           print(newText);

@@ -111,7 +111,7 @@ class _monumentListState extends State<monumentList> {
                                 ),
                               ),
                             ),
-                           if (widget.monumentList2[index].voice != "")SizedBox(
+                           (widget.monumentList2[index].voice != "")?SizedBox(
                              width: MediaQuery.of(context).size.width*0.15,
                              child: TextButton(
                                  style: ButtonStyle(
@@ -123,7 +123,7 @@ class _monumentListState extends State<monumentList> {
                                  },
                                  child: Icon(Icons.volume_up, size: 30.sp,)
                              ),
-                           ),
+                           ): SizedBox(width: MediaQuery.of(context).size.width*0.15),
                           ],
                         ),
                       ),

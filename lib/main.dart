@@ -138,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     }, child: Text("ホームページ")),
                                     TextButton(onPressed: (){
                                       Share.share("シェアします");
-                                    }, child: Text("シェアする")),
+                                    }, child: Text("広東語の発音をひらがな表記に！https://youtube.com/playlist?list=PLZ4XMcZZE-B0mz1ICjKc3Iaw5VD00RLyF")),
                                   ],
 
                               );
@@ -154,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: IconButton(
                           padding: EdgeInsets.zero,
                           onPressed: (){
-                            Share.share("シェアします");
+                            Share.share("広東語の発音をひらがな表記に！https://youtube.com/playlist?list=PLZ4XMcZZE-B0mz1ICjKc3Iaw5VD00RLyF");
                           },
                           icon: Icon(Icons.ios_share_outlined, size: 20.sp,),
                         ),),
@@ -197,7 +197,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               width: 55.w,
                               child: TextButton(
                                   onPressed: ()async {
-                                    launchUrl(Uri.parse('https://www.youtube.com/c/catonknees'));
+                                    launchUrl(Uri.parse('https://youtube.com/playlist?list=PLZ4XMcZZE-B0mz1ICjKc3Iaw5VD00RLyF'));
                                   },
                                   style: ButtonStyle(
                                       alignment: Alignment.center,

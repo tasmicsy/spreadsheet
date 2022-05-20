@@ -137,8 +137,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                       launchUrl(Uri.parse("https://catonknees.com/"));
                                     }, child: Text("ホームページ")),
                                     TextButton(onPressed: (){
-                                      Share.share("シェアします");
-                                    }, child: Text("広東語の発音をひらがな表記に！https://youtube.com/playlist?list=PLZ4XMcZZE-B0mz1ICjKc3Iaw5VD00RLyF")),
+                                      Share.share("広東語の発音をひらがな表記に！https://youtube.com/playlist?list=PLZ4XMcZZE-B0mz1ICjKc3Iaw5VD00RLyF");
+                                    }, child: Text("シェアする")),
                                   ],
 
                               );

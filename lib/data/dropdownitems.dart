@@ -5,7 +5,7 @@ class DropdownItems {
     "b", "ch", "d", "f", "g", "gw", "h", "j", "l", "m", "n", "ng", "p", "s", "t", "k", "kw", "w", "y", "X無し"
   ];
   static List<String> secondItemsString = [
-    "a", "aai", "aau", "aa", "ai", "au", "e", "ei", "iu", "i", "ou", "u", "ui", "oi", "eui", "eu", "yu",  "X無し"
+    "a", "aa",  "ai","aai","au", "aau", "iu",  "i", "u", "ui", "e", "ei",  "eui", "eu","o", "oi","ou",  "yu",  "X無し"
   ];
   static List<String> thirdItemsString = [
     "m", "n", "ng", "p", "t", "k", "X無し",  ];

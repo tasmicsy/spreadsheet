@@ -95,6 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Color.fromRGBO(228, 219, 216, 1),
         body: FutureBuilder<List<MonumentModel>>(
           future: MonumentModel.fetchMonument(),
@@ -111,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 6.0.h),
+                    padding: EdgeInsets.only(top: 6.0.h, bottom: 10.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,

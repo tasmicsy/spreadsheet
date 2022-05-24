@@ -13,11 +13,56 @@ import 'package:spreadsheet/ui/monumentlst.dart';
 import 'package:spreadsheet/ui/textfield.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+AppOpenAd? openAd;
+Future<void> loadInitialAd()async{
+  await AppOpenAd.load(
+    adUnitId: AdHelper.startAppAdUnitId,
+    request: const AdRequest(),
+    adLoadCallback: AppOpenAdLoadCallback(
+      onAdLoaded: (ad){
+        print("Ad is loadedddd");
+        openAd = ad;
+        openAd!.show();
+      },
+      onAdFailedToLoad: (error){
+        print("ad failed to load ${error}");
+      }
+    ), orientation: AppOpenAd.orientationPortrait
+  );
+}
+void showInitialAd(){
+  if (openAd == null){
+    print('trying');
+    loadInitialAd();
+    return;
+  }
+  openAd!.fullScreenContentCallback = FullScreenContentCallback(
+    onAdShowedFullScreenContent: (Ad){
+      print("onAdshowed");
+    },
+    onAdFailedToShowFullScreenContent: (ad, error){
+      ad.dispose();
+      print("failed to load $error");
+      openAd = null;
+      loadInitialAd();
+    },
+    onAdDismissedFullScreenContent: (ad){
+      ad.dispose();
+      print("dismissed");
+      openAd = null;
+      loadInitialAd();
+  }
+  );
+  openAd!.show();
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await MobileAds.instance.initialize();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(MyApp());
 }
 
@@ -68,6 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState(){
+    loadInitialAd();
     super.initState();
     _bannerAd = BannerAd(
         adUnitId: AdHelper.bannerAdUnitId,
@@ -93,13 +139,13 @@ class _MyHomePageState extends State<MyHomePage> {
   // MyHomePage({ required this.monuments});
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Color.fromRGBO(228, 219, 216, 1),
         body: FutureBuilder<List<MonumentModel>>(
           future: MonumentModel.fetchMonument(),
           builder: (context, snapshot) {
+
             ScreenUtil.init(context,
                 orientation: Orientation.landscape,
                 deviceSize: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),

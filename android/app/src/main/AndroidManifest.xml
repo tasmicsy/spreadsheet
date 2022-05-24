@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.spreadsheet">
+    package="com.catonknees.conversion">
    <application
         android:label="広東語発音かな変換"
         android:name="${applicationName}"

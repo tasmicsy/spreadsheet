@@ -18,7 +18,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  MobileAds.instance.initialize();
   runApp(MyApp());
 }
 
@@ -70,7 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState(){
     super.initState();
-
     _bannerAd = BannerAd(
         adUnitId: AdHelper.bannerAdUnitId,
         request: const AdRequest(),

@@ -24,6 +24,8 @@ class _SecondPageState extends State<SecondPage> {
 
   bool expanded4 = false;
 
+
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,62 +38,70 @@ class _SecondPageState extends State<SecondPage> {
         child:         Column(
           children: [
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width*0.4,
-                  child: FittedBox(
-                    child: Text(widget.monument.chinese, style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width*0.4, color: Colors.grey, fontWeight: FontWeight.bold),),
-                  ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:[SizedBox(
-                    height: MediaQuery.of(context).size.width*0.4,
-                    child: Column(
-                      children: [
-                       if (widget.monument.catOnknees!= "")SizedBox(
-                          width: MediaQuery.of(context).size.width*0.4,
-
-                          child: FittedBox(
-                            fit: BoxFit.fitWidth,
-                              child: Text('CatOnKnees式:',
-                                style: TextStyle(fontSize: 19.sp, color: Color.fromRGBO(67, 67, 67, 1)),)),
-                        ),
-                          Text(widget.monument.catOnknees,style: TextStyle(fontSize: 20.sp, color:  Color.fromRGBO(102, 102, 102, 1), fontWeight: FontWeight.bold), ),
-                        if (widget.monument.yale!= "")Text("イエール式:${widget.monument.yale}",style: TextStyle(fontSize: 18.sp, color: Colors.grey), ),
-                        if (widget.monument.jyutpin!= "") Text("粵拼: ${widget.monument.jyutpin}",style: TextStyle(fontSize: 18.sp, color: Colors.grey), ),
-                       // if (monument.voice!="")
-                       if (widget.monument.voice!= "") SizedBox(
-                         height: 25.h,
-                             child: Center(
-                               child: TextButton(
-                                 style: ButtonStyle(
-                                   alignment: Alignment.topCenter,
-                                   overlayColor: MaterialStateProperty.all(Colors.white,)
-                                 ),
-                               onPressed: ()async{
-                                 setState((){colorvolume = Colors.grey;});
-
-                                 await player.setUrl(widget.monument.voice);
-                                 player.play();
-                                 setState((){colorvolume = Colors.black;});
-                               },
-                               child:Icon(Icons.volume_up, color: colorvolume)),
-                             ),
-                           )
-                      ],
+            SizedBox(
+              height: MediaQuery.of(context).size.height *0.3,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    // color: Colors.black,
+                    width: MediaQuery.of(context).size.width*0.4,
+                    height: MediaQuery.of(context).size.height*0.3,
+                    child: FittedBox(
+                      child: Text(widget.monument.chinese, style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.height*0.4, color: Colors.grey, fontWeight: FontWeight.bold),),
                     ),
                   ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:[Container(
+                       // color: Colors.blue,
+                      height: MediaQuery.of(context).size.height*0.19,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                         if (widget.monument.catOnknees!= "")SizedBox(
+                            width: MediaQuery.of(context).size.width*0.4,
+
+                            child: Text('CatOnKnees式:',textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 17.h, color: Color.fromRGBO(67, 67, 67, 1)),),
+                          ),
+                            Text(widget.monument.catOnknees,style: TextStyle(fontSize: 18.h, color:  Color.fromRGBO(102, 102, 102, 1), fontWeight: FontWeight.bold), ),
+                          if (widget.monument.yale!= "")Text("イエール式:${widget.monument.yale}",style: TextStyle(fontSize: 16.h, color: Colors.grey), ),
+                          if (widget.monument.jyutpin!= "") Text("粵拼: ${widget.monument.jyutpin}",style: TextStyle(fontSize: 16.h, color: Colors.grey), ),
+                         // if (monument.voice!="")
+                         if (widget.monument.voice!= "") SizedBox(
+                           height: 27.h,
+                               child: Center(
+                                 child: TextButton(
+                                   style: ButtonStyle(
+                                     // backgroundColor: MaterialStateProperty.all(Colors.yellow),
+                                     alignment: Alignment.topCenter,
+                                     overlayColor: MaterialStateProperty.all(Colors.white,)
+                                   ),
+                                 onPressed: ()async{
+
+                                   setState((){colorvolume = Colors.grey;});
+
+                                   await player.setUrl(widget.monument.voice);
+                                   player.play();
+                                   setState((){colorvolume = Colors.black;});
+                                 },
+                                 child:Icon(Icons.volume_up, color: colorvolume, size: 20.h)),
+                               ),
+                             )
+                        ],
+                      ),
+                    ),
 
 
 
-                    ]
-                )
+                      ]
+                  )
 
-              ],
+                ],
+              ),
             ),
         SizedBox(
           height: MediaQuery.of(context).size.height*0.45,
@@ -105,7 +115,7 @@ class _SecondPageState extends State<SecondPage> {
                   children: [
 
                     if(widget.monument.initial!= ""|| widget.monument.vowel!= ""||widget.monument.end!= ""||widget.monument.tone!= "")Padding(
-                      padding: EdgeInsets.symmetric(vertical:8.0, horizontal: MediaQuery.of(context).size.width*0.04),
+                      padding: EdgeInsets.symmetric(vertical:8.0.h, horizontal: MediaQuery.of(context).size.width*0.04),
                       child: Container(
                         decoration: BoxDecoration(
                             boxShadow: [
@@ -120,16 +130,16 @@ class _SecondPageState extends State<SecondPage> {
                             borderRadius: BorderRadius.all(Radius.circular(20))
                         ),
                         child: Padding(
-                          padding: EdgeInsets.symmetric(vertical:8.0),
+                          padding: EdgeInsets.symmetric(vertical:8.0.h),
                           child: Column(
                             children: [
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.15,
-                                    child: Text("声母", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 20),),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.3, child: Text("韻母", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20)),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text("声調", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20)),),
+                                    child: Text("声母", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15.h),),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.3, child: Text("韻母", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 15.h)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text("声調", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 15.h)),),
                                 ],
 
                               ),
@@ -137,9 +147,9 @@ class _SecondPageState extends State<SecondPage> {
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.15,
-                                    child: Text("(子音)", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 15)),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text("(母音)", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 15)),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text("(語尾)", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 15)),),
+                                    child: Text("(子音)", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 13.h)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text("(母音)", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 13.h)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text("(語尾)", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 13.h)),),
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.15, )
                                 ],),
                               Padding(
@@ -154,10 +164,10 @@ class _SecondPageState extends State<SecondPage> {
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
 
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.initial, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20)),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.vowel, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20)),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.end, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20)),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.tone, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.initial, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 17.h)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.vowel, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 17.h)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.end, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 17.h)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.tone, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 17.h)),),
                                 ],),
                             ],
                           ),
@@ -175,28 +185,28 @@ class _SecondPageState extends State<SecondPage> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                  Text(widget.monument.cokInitial, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                                   Text("   +   ", style: TextStyle(fontSize: 20),),
-                                  Text(widget.monument.cokVowel, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                                    Text("   +   ", style: TextStyle(fontSize: 20),),
-                                 Text(widget.monument.cokEnd, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                  Text(widget.monument.cokInitial, style: TextStyle(fontSize: 17.h, fontWeight: FontWeight.bold),),
+                                   Text("   +   ", style: TextStyle(fontSize: 17.h),),
+                                  Text(widget.monument.cokVowel, style: TextStyle(fontSize: 17.h, fontWeight: FontWeight.bold),),
+                                    Text("   +   ", style: TextStyle(fontSize: 17.h),),
+                                 Text(widget.monument.cokEnd, style: TextStyle(fontSize: 17.h, fontWeight: FontWeight.bold),),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("=   ", style: TextStyle(fontSize: 20),),
-                                    Text(widget.monument.catOnknees, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                                    Text("=   ", style: TextStyle(fontSize: 17.h),),
+                                    Text(widget.monument.catOnknees, style: TextStyle(fontSize: 17.h, fontWeight: FontWeight.bold),),
                                   ],
                                 )
                               ],
                             ),
 
-                          if(widget.monument.cokTips1!="")TextWithPad(content: Text(widget.monument.cokTips1, style: TextStyle(fontSize: 16),)),
-                          if(widget.monument.cokTips2!="")TextWithPad(content: Text(widget.monument.cokTips2, style: TextStyle(color: Colors.red, fontSize: 16),)),
+                          if(widget.monument.cokTips1!="")TextWithPad(content: Text(widget.monument.cokTips1, style: TextStyle(fontSize: 13.h),)),
+                          if(widget.monument.cokTips2!="")TextWithPad(content: Text(widget.monument.cokTips2, style: TextStyle(color: Colors.red, fontSize: 13.h),)),
 
-                          if(widget.monument.cokTips3!="")TextWithPad(content: Text(widget.monument.cokTips3, style: TextStyle(fontSize: 16),)),
-                          if(widget.monument.cokTips4!="")TextWithPad(content: Text(widget.monument.cokTips4, style: TextStyle(fontSize: 16),)),
+                          if(widget.monument.cokTips3!="")TextWithPad(content: Text(widget.monument.cokTips3, style: TextStyle(fontSize: 13.h),)),
+                          if(widget.monument.cokTips4!="")TextWithPad(content: Text(widget.monument.cokTips4, style: TextStyle(fontSize: 13.h),)),
                           Padding(padding: EdgeInsets.all(8))
                         ],
                       ),
@@ -218,7 +228,7 @@ class _SecondPageState extends State<SecondPage> {
                     color: Color.fromRGBO(217, 217, 217, 1),
                       contents: Column(
                       children: [
-                        TextWithPad(content: Text(widget.monument.vocab,textAlign: TextAlign.center, style: TextStyle(fontSize: 16),)),
+                        TextWithPad(content: Text(widget.monument.vocab,textAlign: TextAlign.center, style: TextStyle(fontSize: 13.h),)),
                         Padding(padding: EdgeInsets.all(8))
                       ]
                   )),
@@ -234,20 +244,20 @@ class _SecondPageState extends State<SecondPage> {
                               padding: EdgeInsets.symmetric(horizontal:20.w),
                           child: Column(
                               children: [
-                                if(widget.monument.mikoTips!="")TextWithPad(content: Text(widget.monument.mikoTips, style: TextStyle(fontSize: 16),)),
+                                if(widget.monument.mikoTips!="")TextWithPad(content: Text(widget.monument.mikoTips, style: TextStyle(fontSize: 13.h),)),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                   if(widget.monument.link1 != "")TextButton(onPressed: ()async{
                                     print(widget.monument.link1);
                                     launchUrl(Uri.parse(widget.monument.link1));
-                                  },child:Text("リンク①")),
+                                  },child:Text("リンク①", style: TextStyle(fontSize: 13.h))),
                                   if(widget.monument.link2 != "")TextButton(onPressed: ()async{
                                     launchUrl(Uri.parse(widget.monument.link2));
-                                  },child:Text("リンク②")),
+                                  },child:Text("リンク②", style: TextStyle(fontSize: 13.h))),
                                   if(widget.monument.link3 != "")TextButton(onPressed: ()async{
                                     launchUrl(Uri.parse(widget.monument.link3));
-                                  },child:Text("リンク③")),
+                                  },child:Text("リンク③", style: TextStyle(fontSize: 13.h))),
                                 ],),
                                 Padding(padding: EdgeInsets.all(8))
                               ]
@@ -265,8 +275,8 @@ class _SecondPageState extends State<SecondPage> {
                           padding: EdgeInsets.symmetric(horizontal:20.w),
                           child: Column(
                               children: [
-                                if(widget.monument.ipa!="")TextWithPad(content: Text("[${widget.monument.ipa}]", style: TextStyle(fontSize: 16),)),
-                                if(widget.monument.phonetics!="")TextWithPad(content: Text(widget.monument.phonetics, style: TextStyle(fontSize: 16),)),
+                                if(widget.monument.ipa!="")TextWithPad(content: Text("[${widget.monument.ipa}]", style: TextStyle(fontSize: 13.h),)),
+                                if(widget.monument.phonetics!="")TextWithPad(content: Text(widget.monument.phonetics, style: TextStyle(fontSize: 13.h),)),
                                 Padding(padding: EdgeInsets.all(8))
 
                               ]
@@ -311,7 +321,7 @@ class CustromTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding:EdgeInsets.symmetric(vertical: 8.h),
-      child: Text(title, textAlign: TextAlign.center,style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold)),
+      child: Text(title, textAlign: TextAlign.center,style: TextStyle(fontSize: 14.h, fontWeight: FontWeight.bold)),
     );
   }
 }

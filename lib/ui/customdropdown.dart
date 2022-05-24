@@ -20,7 +20,7 @@ Widget CustomDropdown(int index,BuildContext context, void Function(dynamic) onC
         hint: Text(label),
         alignment: Alignment.centerRight,
         style: TextStyle(
-          fontSize: 12.sp,
+          fontSize: 12.h,
           color: Colors.black,
 
         ),

@@ -18,6 +18,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  MobileAds.instance.initialize();
   runApp(MyApp());
 }
 
@@ -69,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState(){
     super.initState();
+
     _bannerAd = BannerAd(
         adUnitId: AdHelper.bannerAdUnitId,
         request: const AdRequest(),
@@ -125,31 +127,46 @@ class _MyHomePageState extends State<MyHomePage> {
                               return SimpleDialog(
 
                                   children: [
-                                    TextButton(onPressed: (){
-                                      launchUrl(Uri.parse("https://catonknees.com/privacy-policy-tc/")) ;
-                                    }, child: Text("プライバシーポリシー")),
-                                    TextButton(onPressed: (){
-                                      launchUrl(Uri.parse("https://www.freeprivacypolicy.com/live/fee39dae-6962-4722-a07d-1e71c92801d7"));
-                                    }, child: Text("利用規約")),
-                                    TextButton(onPressed: (){
-                                      launchUrl(Uri.parse('mailto:infocatonknees@gmail.com?subject=お問い合せ&body=お問合せ内容を書いてください。'));
-                                    }, child: Text("お問合せ")),
-                                    TextButton(onPressed: (){
-                                      launchUrl(Uri.parse("https://catonknees.com/"));
-                                    }, child: Text("ホームページ")),
-                                    TextButton(onPressed: (){
-                                      Share.share("広東語の発音をひらがな表記に！https://youtube.com/playlist?list=PLZ4XMcZZE-B0mz1ICjKc3Iaw5VD00RLyF");
-                                    }, child: Text("シェアする")),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
+                                      child: TextButton(onPressed: (){
+                                        launchUrl(Uri.parse("https://catonknees.com/privacy-policy-tc/")) ;
+                                      }, child: Text("プライバシーポリシー", style: TextStyle(fontSize: 15.h),)),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
+                                      child: TextButton(onPressed: (){
+                                        launchUrl(Uri.parse("https://www.freeprivacypolicy.com/live/fee39dae-6962-4722-a07d-1e71c92801d7"));
+                                      }, child: Text("利用規約", style: TextStyle(fontSize: 15.h),)),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
+                                      child: TextButton(onPressed: (){
+                                        launchUrl(Uri.parse('mailto:infocatonknees@gmail.com?subject=お問い合せ&body=お問合せ内容を書いてください。'));
+                                      }, child: Text("お問合せ", style: TextStyle(fontSize: 15.h),)),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
+                                      child: TextButton(onPressed: (){
+                                        launchUrl(Uri.parse("https://catonknees.com/"));
+                                      }, child: Text("ホームページ", style: TextStyle(fontSize: 15.h),)),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
+                                      child: TextButton(onPressed: (){
+                                        Share.share("広東語の発音をひらがな表記に！https://youtube.com/playlist?list=PLZ4XMcZZE-B0mz1ICjKc3Iaw5VD00RLyF");
+                                      }, child: Text("シェアする", style: TextStyle(fontSize: 15.h),)),
+                                    ),
                                   ],
 
                               );
                             });
                           },
                               padding: EdgeInsets.zero,
-                              icon: Icon(Icons.dehaze, size: 25.sp,)),
+                              icon: Icon(Icons.dehaze, size: 23.h,)),
                         ),
                         Text("世界初！広東語発音ひらがな表記", style: TextStyle(
-                          fontSize: 16.sp
+                          fontSize: 14.h,
                         ),),
                         SizedBox(height: 16.h, width: 15.w,
                         child: IconButton(
@@ -157,7 +174,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           onPressed: (){
                             Share.share("広東語の発音をひらがな表記に！https://youtube.com/playlist?list=PLZ4XMcZZE-B0mz1ICjKc3Iaw5VD00RLyF");
                           },
-                          icon: Icon(Icons.ios_share_outlined, size: 20.sp,),
+                          icon: Icon(Icons.ios_share_outlined, size: 18.h,),
                         ),),
                       ],
                     ),
@@ -192,10 +209,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('広東語発音完全解説動画は'),
+                            Text('広東語発音完全解説動画は', style: TextStyle(fontSize: 12.h),),
                             SizedBox(
                               height: 28.h,
-                              width: 55.w,
+                              width: 40.h,
                               child: TextButton(
                                   onPressed: ()async {
                                     launchUrl(Uri.parse('https://youtube.com/playlist?list=PLZ4XMcZZE-B0mz1ICjKc3Iaw5VD00RLyF'));
@@ -209,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       decoration: TextDecoration.underline,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.brown,
-                                    fontSize: 13.sp
+                                    fontSize: 12.h
                                   ),textAlign: TextAlign.start,)),
                             )
                           ],
@@ -266,6 +283,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             endTmp= endTmp;
                             toneTmp= toneTmp;
                           });},),
+                        Padding(padding: EdgeInsets.only(top: 3)),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -305,7 +323,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 });
                               //print(voiceTmp);
                               },color: (voiceTmp== null || voiceTmp == false) ? Colors.grey: Color.fromRGBO(186, 206, 179, 1),
-                                  name: Icon(Icons.volume_up)),
+                                  name: Icon(Icons.volume_up, size: 23.h)),
                               CustomButton(onPressedFunc: (){setState((){
     pickerValue = [null,null,null,null];
     _editController1.clear();
@@ -323,7 +341,7 @@ class _MyHomePageState extends State<MyHomePage> {
     toneTmp= null;
     voiceTmp = null;
     });},color: Color.fromRGBO(251, 229, 153, 1),
-                                  name: Icon(Icons.delete))
+                                  name: Icon(Icons.delete, size:23.h))
                             ]
                         ),
                       ],

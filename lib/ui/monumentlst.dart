@@ -30,7 +30,7 @@ class _monumentListState extends State<monumentList> {
                 width: MediaQuery.of(context).size.width * 0.3,
                 color: Colors.grey,
               ),
-              Text("全${widget.monumentList2.length}件"),
+              Text("全${widget.monumentList2.length}件", style: TextStyle(fontSize: 13.h),),
               Container(
                 height: 1,
                 width: MediaQuery.of(context).size.width * 0.3,
@@ -69,8 +69,9 @@ class _monumentListState extends State<monumentList> {
                           children: [
                             Container(
                               // color: Colors.grey,
-                              width: MediaQuery.of(context).size.width *0.12,
-                              height: MediaQuery.of(context).size.width *0.12,
+                               width: MediaQuery.of(context).size.height *0.055,
+                              // width: MediaQuery.of(context).size.width *0.12,
+                              height: MediaQuery.of(context).size.height *0.055,
                               decoration: BoxDecoration(
                                 color: Colors.grey,
                                 borderRadius: BorderRadius.circular(30.h),
@@ -84,7 +85,7 @@ class _monumentListState extends State<monumentList> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontWeight: FontWeight.bold, fontSize: 25.sp),
+                                        fontWeight: FontWeight.bold, fontSize: 23.h),
                                   ),
                                 ),
                               ),
@@ -96,7 +97,7 @@ class _monumentListState extends State<monumentList> {
                                 child: Text(widget.monumentList2[index].catOnknees,
                                   textAlign: TextAlign.left,
                                   style: TextStyle(fontWeight: FontWeight.bold,
-                                      fontSize: 15.sp),),
+                                      fontSize: 13.h),),
                               ),
                             ),
                             Container(
@@ -107,6 +108,7 @@ class _monumentListState extends State<monumentList> {
                                 textAlign: TextAlign.start
                                 ,
                                 style: TextStyle(
+                                  fontSize: 13.h,
                                   color: Colors.grey,
                                 ),
                               ),
@@ -121,7 +123,7 @@ class _monumentListState extends State<monumentList> {
                                    await player.setUrl(widget.monumentList2[index].voice);
                                    player.play();
                                  },
-                                 child: Icon(Icons.volume_up, size: 30.sp,)
+                                 child: Icon(Icons.volume_up, size: 27.h,)
                              ),
                            ): SizedBox(width: MediaQuery.of(context).size.width*0.15),
                           ],

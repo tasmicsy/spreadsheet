@@ -14,7 +14,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 0, vertical: 2.h),
+      padding: EdgeInsets.symmetric(horizontal: 0, vertical: 3),
       child: Container(
         height:35.h,
         child: TextField(
@@ -24,7 +24,7 @@ class CustomTextField extends StatelessWidget {
           decoration: InputDecoration(
               labelStyle: TextStyle(
                 color: Colors.black54,
-                fontSize: 15.sp,
+                fontSize: 13.h,
               ),
               // focusColor: Colors.black54,
             enabledBorder: OutlineInputBorder(

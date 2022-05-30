@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-List<int?> pickerValue = [null,null,null,null];
+List<int?> pickerValue = [0,0,0,0];
 class DropdownItems {
   static List<String> firstItemsString = [
-    "b", "ch", "d", "f", "g", "gw", "h", "j", "l", "m", "n", "ng", "p", "s", "t", "k", "kw", "w", "y", "X無し"
+   "声母", "b", "ch", "d", "f", "g", "gw", "h", "j", "l", "m", "n", "ng", "p", "s", "t", "k", "kw", "w", "y", "X無し"
   ];
   static List<String> secondItemsString = [
-    "a", "aa",  "ai","aai","au", "aau", "iu",  "i", "u", "ui", "e", "ei",  "eui", "eu","o", "oi","ou",  "yu",  "X無し"
+   "韻母1", "a", "aa",  "ai","aai","au", "aau", "iu",  "i", "u", "ui", "e", "ei",  "eui", "eu","o", "oi","ou",  "yu",  "X無し"
   ];
   static List<String> thirdItemsString = [
-    "m", "n", "ng", "p", "t", "k", "X無し",  ];
+   "韻母2", "m", "n", "ng", "p", "t", "k", "X無し",  ];
   static List<String> fourthItemsString = [
-    "1", "2", "3", "4", "5", "6"  ];
+    "声調","1", "2", "3", "4", "5", "6"  ];
 
   static List<DropdownMenuItem<int>>Items(List<String> ItemsString) {
   return List.generate(ItemsString.length, (index)

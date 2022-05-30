@@ -336,22 +336,28 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: [
                           CustomDropdown(0,context, (p0) {
                             print(p0);
-                            setState((){pickerValue[0] = p0;
-                              initialTmp = (DropdownItems.firstItemsString[p0] == "X無し")? "":DropdownItems.firstItemsString[p0];
+                            setState((){
+                              pickerValue[0] = p0;
+                              if(DropdownItems.firstItemsString[p0] == "声母") initialTmp = null;
+                              else initialTmp = (DropdownItems.firstItemsString[p0] == "X無し")? "":DropdownItems.firstItemsString[p0];
+
                             }); }, "声母", DropdownItems.Items(DropdownItems.firstItemsString)),
                           CustomDropdown(1,context,
                                   (p0) { setState((){
                                     pickerValue[1] = p0;
-                                    vowelTmp = (DropdownItems.secondItemsString[p0] == "X無し")? "":DropdownItems.secondItemsString[p0];});}, "韻母1", DropdownItems.Items(DropdownItems.secondItemsString)),
+                                    if(DropdownItems.secondItemsString[p0] == "韻母1") vowelTmp = null;
+                                    else vowelTmp = (DropdownItems.secondItemsString[p0] == "X無し")? "":DropdownItems.secondItemsString[p0];});}, "韻母1", DropdownItems.Items(DropdownItems.secondItemsString)),
                           CustomDropdown(2,context,
                                   (p0) { setState((){
                                     pickerValue[2] = p0;
-                                    endTmp = (DropdownItems.thirdItemsString[p0] == "X無し")? "":DropdownItems.thirdItemsString[p0];
+                                    if(DropdownItems.thirdItemsString[p0] == "声母") endTmp = null;
+                                    else endTmp = (DropdownItems.thirdItemsString[p0] == "X無し")? "":DropdownItems.thirdItemsString[p0];
                                   });}, "韻母2", DropdownItems.Items(
                                   DropdownItems.thirdItemsString)),
                           CustomDropdown(3,context, (p0) {
                             setState((){pickerValue[3] = p0;
-                            toneTmp = DropdownItems.fourthItemsString[p0];});}, "声調", DropdownItems.Items(DropdownItems.fourthItemsString)),
+                            if(DropdownItems.fourthItemsString[p0] == "声母") toneTmp = null;
+                            else toneTmp = DropdownItems.fourthItemsString[p0];});}, "声調", DropdownItems.Items(DropdownItems.fourthItemsString)),
                         ]),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -372,7 +378,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               },color: (voiceTmp== null || voiceTmp == false) ? Colors.grey: Color.fromRGBO(186, 206, 179, 1),
                                   name: Icon(Icons.volume_up, size: 23.h)),
                               CustomButton(onPressedFunc: (){setState((){
-    pickerValue = [null,null,null,null];
+    pickerValue = [0,0,0,0];
     _editController1.clear();
     _editController2.clear();
     _editController3.clear();

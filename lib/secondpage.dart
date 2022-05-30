@@ -5,6 +5,8 @@ import 'package:spreadsheet/monumentmodel.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'main.dart';
+
 class SecondPage extends StatefulWidget {
   MonumentModel monument;
 
@@ -82,14 +84,15 @@ class _SecondPageState extends State<SecondPage> {
                                      overlayColor: MaterialStateProperty.all(Colors.white,)
                                    ),
                                  onPressed: ()async{
-                                   EasyLoading.show(status: "音声読み込み中");
+                                   if (voiceTimes==false) EasyLoading.show(status: "音声読み込み中");
                                    setState((){colorvolume = Colors.grey;});
 
                                    await player.setUrl(widget.monument.voice);
                                    player.play();
 
                                    setState((){colorvolume = Colors.black;});
-                                   EasyLoading.dismiss();
+                                   if (voiceTimes==false) EasyLoading.dismiss();
+                                   if (voiceTimes==false) voiceTimes=true;
                                  },
                                  child:Icon(Icons.volume_up, color: colorvolume, size: 20.h)),
                                ),

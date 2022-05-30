@@ -14,6 +14,8 @@ import 'package:spreadsheet/ui/monumentlst.dart';
 import 'package:spreadsheet/ui/textfield.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+bool voiceTimes = false;
+
 AppOpenAd? openAd;
 Future<void> loadInitialAd()async{
   await AppOpenAd.load(

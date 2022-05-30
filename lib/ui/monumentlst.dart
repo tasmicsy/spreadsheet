@@ -4,6 +4,8 @@ import 'package:just_audio/just_audio.dart';
 import 'package:spreadsheet/monumentmodel.dart';
 import 'package:spreadsheet/secondpage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../main.dart';
 class monumentList extends StatefulWidget{
   BuildContext context;
   List<MonumentModel> monumentList2;
@@ -123,14 +125,15 @@ class _monumentListState extends State<monumentList> {
                                      foregroundColor: MaterialStateProperty.all<Color>(colorvolume)
                                  ),
                                  onPressed: ()async {
-                                   EasyLoading.show();
+                                   if (voiceTimes==false) EasyLoading.show();
                                    // print(sound);
                                    await player.setUrl(widget.monumentList2[index].voice);
                                    player.play();
                                    // setState((){
                                    //   sound = Icon(Icons.volume_up, size: 27.h,);
                                    // });
-                                   EasyLoading.dismiss();
+                                   if (voiceTimes== false)EasyLoading.dismiss();
+                                   if (voiceTimes==false) voiceTimes=true;
                                    // print(sound);
                                  },
                                  child: (sound!=null)?sound!: Icon(Icons.volume_up, size: 27.h,)

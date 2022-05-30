@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:share/share.dart';
@@ -30,31 +31,31 @@ Future<void> loadInitialAd()async{
     ), orientation: AppOpenAd.orientationPortrait
   );
 }
-void showInitialAd(){
-  if (openAd == null){
-    print('trying');
-    loadInitialAd();
-    return;
-  }
-  openAd!.fullScreenContentCallback = FullScreenContentCallback(
-    onAdShowedFullScreenContent: (Ad){
-      print("onAdshowed");
-    },
-    onAdFailedToShowFullScreenContent: (ad, error){
-      ad.dispose();
-      print("failed to load $error");
-      openAd = null;
-      loadInitialAd();
-    },
-    onAdDismissedFullScreenContent: (ad){
-      ad.dispose();
-      print("dismissed");
-      openAd = null;
-      loadInitialAd();
-  }
-  );
-  openAd!.show();
-}
+// void showInitialAd(){
+//   if (openAd == null){
+//     print('trying');
+//     loadInitialAd();
+//     return;
+//   }
+//   openAd!.fullScreenContentCallback = FullScreenContentCallback(
+//     onAdShowedFullScreenContent: (Ad){
+//       print("onAdshowed");
+//     },
+//     onAdFailedToShowFullScreenContent: (ad, error){
+//       ad.dispose();
+//       print("failed to load $error");
+//       openAd = null;
+//       loadInitialAd();
+//     },
+//     onAdDismissedFullScreenContent: (ad){
+//       ad.dispose();
+//       print("dismissed");
+//       openAd = null;
+//       loadInitialAd();
+//   }
+//   );
+//   openAd!.show();
+// }
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -79,6 +80,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (child) {
         return MaterialApp(
+          builder:   EasyLoading.init(),
           debugShowCheckedModeBanner: false,
             home:MyHomePage());
       }
@@ -113,6 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState(){
+
     loadInitialAd();
     super.initState();
     _bannerAd = BannerAd(

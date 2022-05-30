@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:spreadsheet/monumentmodel.dart';
 import 'package:spreadsheet/secondpage.dart';
@@ -16,6 +17,7 @@ class monumentList extends StatefulWidget{
 class _monumentListState extends State<monumentList> {
   final player = AudioPlayer();
   Color colorvolume = Colors.black54;
+  Widget? sound;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -46,6 +48,7 @@ class _monumentListState extends State<monumentList> {
               padding: EdgeInsets.zero,
               itemCount: widget.monumentList2.length,
               itemBuilder: (context, index) {
+
 //print(monumentList2[index].initial);
                 // if (index1== 0){
                 //   return Text("全部で${monumentList2.length}件");
@@ -120,10 +123,17 @@ class _monumentListState extends State<monumentList> {
                                      foregroundColor: MaterialStateProperty.all<Color>(colorvolume)
                                  ),
                                  onPressed: ()async {
+                                   EasyLoading.show();
+                                   // print(sound);
                                    await player.setUrl(widget.monumentList2[index].voice);
                                    player.play();
+                                   // setState((){
+                                   //   sound = Icon(Icons.volume_up, size: 27.h,);
+                                   // });
+                                   EasyLoading.dismiss();
+                                   // print(sound);
                                  },
-                                 child: Icon(Icons.volume_up, size: 27.h,)
+                                 child: (sound!=null)?sound!: Icon(Icons.volume_up, size: 27.h,)
                              ),
                            ): SizedBox(width: MediaQuery.of(context).size.width*0.15),
                           ],

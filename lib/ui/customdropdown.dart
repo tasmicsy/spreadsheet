@@ -21,7 +21,7 @@ Widget CustomDropdown(int index,BuildContext context, void Function(dynamic) onC
         alignment: Alignment.centerRight,
         style: TextStyle(
           fontSize: 12.h,
-          color: Colors.black,
+          color: Colors.grey[800],
 
         ),
         dropdownColor: Colors.white,

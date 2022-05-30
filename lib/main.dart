@@ -115,11 +115,15 @@ class _MyHomePageState extends State<MyHomePage> {
   String? toneTmp;
   bool? voiceTmp;
 
+  InterstitialAd? _interstitialAd;
+  AdInterstitial adInterstitial = new AdInterstitial();
+
   @override
   void initState(){
 
-    loadInitialAd();
+    // loadInitialAd();
     super.initState();
+    adInterstitial.createAd();
     _bannerAd = BannerAd(
         adUnitId: AdHelper.bannerAdUnitId,
         request: const AdRequest(),
@@ -140,10 +144,12 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
     );
     _bannerAd.load();
+   adInterstitial.showAd();
   }
   // MyHomePage({ required this.monuments});
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Color.fromRGBO(228, 219, 216, 1),

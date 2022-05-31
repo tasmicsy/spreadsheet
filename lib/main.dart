@@ -358,13 +358,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           CustomDropdown(2,context,
                                   (p0) { setState((){
                                     pickerValue[2] = p0;
-                                    if(DropdownItems.thirdItemsString[p0] == "声母") endTmp = null;
+                                    if(DropdownItems.thirdItemsString[p0] == "韻母2") endTmp = null;
                                     else endTmp = (DropdownItems.thirdItemsString[p0] == "X無し")? "":DropdownItems.thirdItemsString[p0];
                                   });}, "韻母2", DropdownItems.Items(
                                   DropdownItems.thirdItemsString)),
                           CustomDropdown(3,context, (p0) {
                             setState((){pickerValue[3] = p0;
-                            if(DropdownItems.fourthItemsString[p0] == "声母") toneTmp = null;
+                            if(DropdownItems.fourthItemsString[p0] == "声調") toneTmp = null;
                             else toneTmp = DropdownItems.fourthItemsString[p0];});}, "声調", DropdownItems.Items(DropdownItems.fourthItemsString)),
                         ]),
                         Row(

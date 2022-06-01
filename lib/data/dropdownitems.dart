@@ -5,7 +5,7 @@ class DropdownItems {
    "声母", "b", "ch", "d", "f", "g", "gw", "h", "j", "l", "m", "n", "ng", "p", "s", "t", "k", "kw", "w", "y", "X無し"
   ];
   static List<String> secondItemsString = [
-   "韻母1", "a", "aa",  "ai","aai","au", "aau", "iu",  "i", "u", "ui", "e", "ei",  "eui", "eu","o", "oi","ou",  "yu",  "X無し"
+   "韻母1", "a", "aa","e","i","o","u", "yu",  "aai","aau","ai","au", "eu","ei","ou", "iu",    "ui",  "oi","eoi",   "oe","eo" ,   "X無し"
   ];
   static List<String> thirdItemsString = [
    "韻母2", "m", "n", "ng", "p", "t", "k", "X無し",  ];

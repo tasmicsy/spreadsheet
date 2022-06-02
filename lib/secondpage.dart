@@ -191,18 +191,18 @@ class _SecondPageState extends State<SecondPage> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                  Text(widget.monument.cokInitial, style: TextStyle(fontSize: 17.h, fontWeight: FontWeight.bold),),
-                                   Text("   +   ", style: TextStyle(fontSize: 17.h),),
-                                  Text(widget.monument.cokVowel, style: TextStyle(fontSize: 17.h, fontWeight: FontWeight.bold),),
-                                    Text("   +   ", style: TextStyle(fontSize: 17.h),),
-                                 Text(widget.monument.cokEnd, style: TextStyle(fontSize: 17.h, fontWeight: FontWeight.bold),),
+                                  Text(widget.monument.cokInitial, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
+                                   Text("   +   ", style: TextStyle(fontSize: 16.h),),
+                                  Text(widget.monument.cokVowel, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
+                                    Text("   +   ", style: TextStyle(fontSize: 16.h),),
+                                 Text(widget.monument.cokEnd, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("=   ", style: TextStyle(fontSize: 17.h),),
-                                    Text(widget.monument.catOnknees, style: TextStyle(fontSize: 17.h, fontWeight: FontWeight.bold),),
+                                    Text("=   ", style: TextStyle(fontSize: 16.h),),
+                                    Text(widget.monument.catOnknees, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
                                   ],
                                 )
                               ],
@@ -281,7 +281,7 @@ class _SecondPageState extends State<SecondPage> {
                           padding: EdgeInsets.symmetric(horizontal:20.w),
                           child: Column(
                               children: [
-                                if(widget.monument.ipa!="")TextWithPad(content: Text("[${widget.monument.ipa}]", style: TextStyle(fontSize: 13.h),)),
+                                if(widget.monument.ipa!="")TextWithPad(content: Text("${widget.monument.ipa}", style: TextStyle(fontSize: 13.h),)),
                                 if(widget.monument.phonetics!="")TextWithPad(content: Text(widget.monument.phonetics, style: TextStyle(fontSize: 13.h),)),
                                 Padding(padding: EdgeInsets.all(8))
 

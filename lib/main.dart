@@ -374,7 +374,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
                             }); }, "声母", DropdownItems.Items(DropdownItems.firstItemsString)),
                           CustomDropdown(1,context,
-                                  (p0) { setState((){
+                                  (p0) {
+                                    _scrollController.animateTo(
+                                      0, //最初の要素の指定
+                                      duration: Duration(milliseconds: 1)/*スクロールの時間*/,
+                                      curve: Curves.linear/*スクロールの仕方*/,
+                                    );
+                            setState((){
                                     pickerValue[1] = p0;
                                     if(DropdownItems.secondItemsString[p0] == "韻母1") vowelTmp = null;
                                     else vowelTmp = (DropdownItems.secondItemsString[p0] == "X無し")? "":DropdownItems.secondItemsString[p0];});}, "韻母1", DropdownItems.Items(DropdownItems.secondItemsString)),
@@ -386,6 +392,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                   });}, "韻母2", DropdownItems.Items(
                                   DropdownItems.thirdItemsString)),
                           CustomDropdown(3,context, (p0) {
+                            _scrollController.animateTo(
+                              0, //最初の要素の指定
+                              duration: Duration(milliseconds: 1)/*スクロールの時間*/,
+                              curve: Curves.linear/*スクロールの仕方*/,
+                            );
                             setState((){pickerValue[3] = p0;
                             if(DropdownItems.fourthItemsString[p0] == "声調") toneTmp = null;
                             else toneTmp = DropdownItems.fourthItemsString[p0];});}, "声調", DropdownItems.Items(DropdownItems.fourthItemsString)),
@@ -394,6 +405,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               CustomButton(onPressedFunc: (){
+                                _scrollController.animateTo(
+                                  0, //最初の要素の指定
+                                  duration: Duration(milliseconds: 1)/*スクロールの時間*/,
+                                  curve: Curves.linear/*スクロールの仕方*/,
+                                );
                                 setState((){
                                   chineseTmp = chineseTmp;
                                   catOnKneesTmp= catOnKneesTmp;
@@ -408,7 +424,13 @@ class _MyHomePageState extends State<MyHomePage> {
                               //print(voiceTmp);
                               },color: (voiceTmp== null || voiceTmp == false) ? Colors.grey: Color.fromRGBO(186, 206, 179, 1),
                                   name: Icon(Icons.volume_up, size: 23.h)),
-                              CustomButton(onPressedFunc: (){setState((){
+                              CustomButton(onPressedFunc: (){
+                                _scrollController.animateTo(
+                                  0, //最初の要素の指定
+                                  duration: Duration(milliseconds: 1)/*スクロールの時間*/,
+                                  curve: Curves.linear/*スクロールの仕方*/,
+                                );
+                                setState((){
     pickerValue = [0,0,0,0];
     _editController1.clear();
     _editController2.clear();

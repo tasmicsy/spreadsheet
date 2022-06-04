@@ -117,6 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   InterstitialAd? _interstitialAd;
   AdInterstitial adInterstitial = new AdInterstitial();
+  var _scrollController = ScrollController();
 
   @override
   void initState(){
@@ -287,6 +288,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         CustomTextField(editController: _editController1,label: "漢字 Chinese", onChangedFunc: (newText){
+                          _scrollController.animateTo(
+                            0, //最初の要素の指定
+                            duration: Duration(milliseconds: 1)/*スクロールの時間*/,
+                            curve: Curves.linear/*スクロールの仕方*/,
+                          );
                           chineseTmp = newText;
                           print(newText);
                           setState((){
@@ -302,7 +308,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           });
                           },),
                         CustomTextField(editController: _editController2,label: "ひらがな CatOnKnees", onChangedFunc: (newText){
-
+                          _scrollController.animateTo(
+                            0, //最初の要素の指定
+                            duration: Duration(milliseconds: 1)/*スクロールの時間*/,
+                            curve: Curves.linear/*スクロールの仕方*/,
+                          );
                           setState((){
                             chineseTmp = chineseTmp;
                             catOnKneesTmp= newText;
@@ -315,7 +325,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           });
                           },),
                         CustomTextField(editController: _editController3,label: "イエール Yale", onChangedFunc: (newText){
-
+                          _scrollController.animateTo(
+                            0, //最初の要素の指定
+                            duration:Duration(milliseconds: 1)/*スクロールの時間*/,
+                            curve: Curves.linear/*スクロールの仕方*/,
+                          );
                           setState((){
                             chineseTmp = chineseTmp;
                             catOnKneesTmp= catOnKneesTmp;
@@ -327,7 +341,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             toneTmp= toneTmp;
                           });},),
                         CustomTextField(editController: _editController4,label: "粵拼 Jyutping", onChangedFunc: (newText){
-
+                          _scrollController.animateTo(
+                            0, //最初の要素の指定
+                            duration: Duration(milliseconds: 1)/*スクロールの時間*/,
+                            curve: Curves.linear/*スクロールの仕方*/,
+                          );
                           setState((){
                             jyutpingTmp = newText;
                             chineseTmp = chineseTmp;
@@ -343,6 +361,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                           CustomDropdown(0,context, (p0) {
+                            _scrollController.animateTo(
+                              0, //最初の要素の指定
+                              duration: Duration(milliseconds: 1)/*スクロールの時間*/,
+                              curve: Curves.linear/*スクロールの仕方*/,
+                            );
                             print(p0);
                             setState((){
                               pickerValue[0] = p0;
@@ -414,7 +437,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           .of(context)
                           .size
                           .height * 0.32,
-                      child: monumentList(context: context, monumentList2:MonumentModel.searchMonument3(snapshot.data!, chineseTmp, catOnKneesTmp, yaleTmp, jyutpingTmp, initialTmp, vowelTmp, endTmp, toneTmp, voiceTmp??false)))
+                      child: monumentList(scrollController: _scrollController,context: context, monumentList2:MonumentModel.searchMonument3(snapshot.data!, chineseTmp, catOnKneesTmp, yaleTmp, jyutpingTmp, initialTmp, vowelTmp, endTmp, toneTmp, voiceTmp??false)))
                       : SizedBox(
                     height: MediaQuery
                 .of(context)

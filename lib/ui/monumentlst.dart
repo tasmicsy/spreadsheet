@@ -9,8 +9,9 @@ import '../main.dart';
 class monumentList extends StatefulWidget{
   BuildContext context;
   List<MonumentModel> monumentList2;
+  ScrollController scrollController;
   // List<MonumentModel>? monumentList2 = MonumentModel.searchMonument3(monumentList, "xx");
-  monumentList({required this.context, required this.monumentList2});
+  monumentList({required this.scrollController,required this.context, required this.monumentList2});
 
   @override
   State<monumentList> createState() => _monumentListState();
@@ -46,6 +47,7 @@ class _monumentListState extends State<monumentList> {
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.28,
           child: ListView.builder(
+            controller:widget.scrollController,
 
               padding: EdgeInsets.zero,
               itemCount: widget.monumentList2.length,

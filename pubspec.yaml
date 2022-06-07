@@ -28,7 +28,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 
 flutter_icons:
-  image_path: "assets/COKAppIconlogo.jpg"
+  image_path: "assets/AppIcon.jpg"
   android: true
   ios: true
 
@@ -49,6 +49,7 @@ dependencies:
   flutter_launcher_icons: ^0.9.2
   share: ^2.0.4
   flutter_easyloading: ^3.0.5
+  app_tracking_transparency: ^2.0.2+4
 
 dev_dependencies:
   flutter_test:

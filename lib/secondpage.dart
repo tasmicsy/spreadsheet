@@ -31,6 +31,7 @@ class _SecondPageState extends State<SecondPage> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.monument.chinese);
     return Padding(
       padding:  EdgeInsets.only(top:90.h, left:10.w, right: 10.w, bottom: 10.h),
       child: Container(
@@ -47,13 +48,43 @@ class _SecondPageState extends State<SecondPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    // color: Colors.black,
-                    width: MediaQuery.of(context).size.width*0.4,
-                    height: MediaQuery.of(context).size.height*0.3,
-                    child: FittedBox(
-                      child: Text(widget.monument.chinese, style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.height*0.4, color: Colors.grey, fontWeight: FontWeight.bold),),
+                  Padding(
+                    padding: const EdgeInsets.only(top:20.0),
+                    child: Container(
+                      // color: Colors.black,
+                      width: MediaQuery.of(context).size.width*0.4,
+                      height: MediaQuery.of(context).size.height*0.25,
+                      child: FittedBox(
+                        child: Column(
+                          children: [
+                            Text(widget.monument.initial
+                              ,
+
+                              style: TextStyle(
+                                fontSize: MediaQuery.of(context).size.height*0.4, color: Colors.grey, fontWeight: FontWeight.bold),),
+                            Container(
+                              height: 10.h,
+                              width: MediaQuery.of(context).size.width*1.5,
+                              color: Colors.grey
+                            ),
+                            Text(widget.monument.vowel
+                              ,
+
+                              style: TextStyle(
+                                  fontSize: MediaQuery.of(context).size.height*0.4, color: Colors.grey, fontWeight: FontWeight.bold),),
+                            Container(
+                                height: 10.h,
+                                width: MediaQuery.of(context).size.width*1.5,
+                                color: Colors.grey
+                            ),
+                            Text(widget.monument.end
+                              ,
+
+                              style: TextStyle(
+                                  fontSize: MediaQuery.of(context).size.height*0.4, color: Colors.grey, fontWeight: FontWeight.bold),),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                   Column(
@@ -114,6 +145,26 @@ class _SecondPageState extends State<SecondPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                Container(
+                  width: MediaQuery.of(context).size.width*0.8,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black45, //色
+                        spreadRadius: 0,
+                        blurRadius: 3,
+                        offset: Offset(1, 1),
+                      ),
+                    ],
+                    color: Color.fromRGBO(217, 217, 217, 1),
+                  ),
+                  child:Column(
+                    children: [
+                      CustromTitle(title: "同音漢字"),
+                      Text(widget.monument.chinese)
+                    ],
+                  ),
+                ),
                 if(widget.monument.initial!= ""|| widget.monument.vowel!= ""||widget.monument.end!= ""||widget.monument.tone!= ""
                 ||widget.monument.cokTips1!= ""||widget.monument.cokTips2!= ""||widget.monument.cokTips3!= ""||widget.monument.cokTips4!= "")CustomBoard(
                   title:  CustromTitle(title: (widget.monument.boxTitle1 == "")? "日本人向け発音のコツ": widget.monument.boxTitle1),

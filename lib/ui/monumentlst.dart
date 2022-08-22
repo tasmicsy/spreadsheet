@@ -64,6 +64,7 @@ class _monumentListState extends State<monumentList> {
                     color: (index%2 == 0)? Colors.white: Colors.grey.shade100,
                     child: ListTile(
                       onTap: () {
+                        // print(widget.monumentList2[index].chinese.length);
                         showDialog(context: context, builder: (context) {
                           return SecondPage(
                               monument: widget.monumentList2[index]);
@@ -85,15 +86,16 @@ class _monumentListState extends State<monumentList> {
                               ),
                               child: Padding(
                                 padding: EdgeInsets.all(7.0.w),
-                                child: FittedBox(
-                                  fit: BoxFit.fitWidth,
-                                  child: Text(
-                                    widget.monumentList2[index].chinese,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold, fontSize: 23.h),
-                                  ),
+                                child: Text(
+                                """
+${widget.monumentList2[index].initial}
+${widget.monumentList2[index].vowel}
+${widget.monumentList2[index].end}
+                                """,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold, fontSize: 7.h),
                                 ),
                               ),
                             ),

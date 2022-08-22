@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 class MonumentModel {
   String chinese;
@@ -117,6 +118,8 @@ class MonumentModel {
 static List<MonumentModel> searchMonument3(List<MonumentModel> monumentList,String? firstItem, String? secondItem, String? thirdItem,
     String? fourthItem, String? fifthItem, String? sixthItem, String?seventhItem, String?eighthItem, bool voiceItem) {
   List<MonumentModel> monumentList2 = [];
+  MonumentModel monumentTemp = MonumentModel(chinese: "", catOnknees: "", yale: "", jyutpin: "", initial: "", vowel: "", end: "", tone: "", voice: "", cokInitial: "", cokVowel: "", cokEnd: "", cokTips1: "", cokTips2: "", cokTips3: "",
+      cokTips4: "", vocab: "", mikoTips: "", link1: "", link2: "", link3: "", ipa: "", phonetics: "", boxTitle1: "", boxTitle2: "", boxTitle3: "", boxTitle4: "");
 
   if(firstItem== null && secondItem==null &&thirdItem==null&&fourthItem==null&&fifthItem==null&&sixthItem == null && seventhItem == null && eighthItem == null &&voiceItem == false ){
     monumentList2 =monumentList;
@@ -131,9 +134,9 @@ static List<MonumentModel> searchMonument3(List<MonumentModel> monumentList,Stri
           &&(sixthItem!= null ?(monumentList[i].vowel == sixthItem):monumentList[i].vowel.contains(""))
           && (seventhItem!= null ? (monumentList[i].end == seventhItem):(monumentList[i].end.contains("")))
           &&( eighthItem != null ?(monumentList[i].tone == eighthItem): (monumentList[i].tone.contains("")))
-       && ((voiceItem== true && monumentList[i].voice!="")|| voiceItem==false)){
+       &&  ((voiceItem== true && monumentList[i].voice!="")|| voiceItem==false)){
   monumentList2.insert(s, monumentList[i]);
-  // print(monumentList2[s].yale);
+
   s = s + 1;
 
       }
@@ -142,6 +145,9 @@ static List<MonumentModel> searchMonument3(List<MonumentModel> monumentList,Stri
     //monumentList2.reversed;
 
     }
+  // if (kDebugMode) {
+  //   print(firstItem);
+  // }
     return monumentList2;
 }
 

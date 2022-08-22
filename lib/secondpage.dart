@@ -31,7 +31,7 @@ class _SecondPageState extends State<SecondPage> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.monument.chinese);
+    // print(widget.monument.chinese);
     return Padding(
       padding:  EdgeInsets.only(top:90.h, left:10.w, right: 10.w, bottom: 10.h),
       child: Container(
@@ -161,7 +161,10 @@ class _SecondPageState extends State<SecondPage> {
                   child:Column(
                     children: [
                       CustromTitle(title: "同音漢字"),
-                      Text(widget.monument.chinese)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom:8.0),
+                        child: Text(widget.monument.chinese),
+                      )
                     ],
                   ),
                 ),

@@ -145,33 +145,39 @@ class _SecondPageState extends State<SecondPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width*0.8,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black45, //色
-                        spreadRadius: 0,
-                        blurRadius: 3,
-                        offset: Offset(1, 1),
-                      ),
-                    ],
-                    color: Color.fromRGBO(217, 217, 217, 1),
-                  ),
-                  child:Column(
-                    children: [
-                      CustromTitle(title: "同音漢字"),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom:8.0),
-                        child: Text(widget.monument.chinese),
-                      )
-                    ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*0.8,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black45, width: 0.2),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black45, //色
+                          spreadRadius: 0,
+                          blurRadius: 3,
+                          offset: Offset(1, 1),
+                        ),
+                      ],
+                      color: Color.fromRGBO(217, 217, 217, 1),
+                    ),
+                    child:Column(
+                      children: [
+                        CustromTitle(title: "同音漢字"),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom:8.0),
+                          child: Text(widget.monument.chinese),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 if(widget.monument.initial!= ""|| widget.monument.vowel!= ""||widget.monument.end!= ""||widget.monument.tone!= ""
-                ||widget.monument.cokTips1!= ""||widget.monument.cokTips2!= ""||widget.monument.cokTips3!= ""||widget.monument.cokTips4!= "")CustomBoard(
+                ||widget.monument.cokTips1!= ""||widget.monument.cokTips2!= ""||widget.monument.cokTips3!= ""||widget.monument.cokTips4!= "")
+                  CustomBoard(
                   title:  CustromTitle(title: (widget.monument.boxTitle1 == "")? "日本人向け発音のコツ": widget.monument.boxTitle1),
-                  color: Color.fromRGBO(239, 239, 239, 1),contents: Column(
+                  color: Color.fromRGBO(239, 239, 239, 1),
+                  contents: Column(
                   children: [
 
                     if(widget.monument.initial!= ""|| widget.monument.vowel!= ""||widget.monument.end!= ""||widget.monument.tone!= "")Padding(

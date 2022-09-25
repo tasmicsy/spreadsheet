@@ -187,12 +187,12 @@ class _MyHomePageState extends State<MyHomePage> {
             );
             if (snapshot.hasError) print('now${snapshot.error}');
             return Padding(
-              padding:  EdgeInsets.only(top: 35.h, bottom: 13.h),
+              padding:  EdgeInsets.only(top: 35.h, bottom: 5.h),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 6.0.h, bottom: 10.h),
+                    padding: EdgeInsets.only(top: 2.0.h, bottom: 7.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -276,7 +276,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: MediaQuery
                         .of(context)
                         .size
-                        .height * 0.4,
+                        .height * 0.43,
                     width: MediaQuery
                         .of(context)
                         .size

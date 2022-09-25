@@ -82,10 +82,11 @@ class _monumentListState extends State<monumentList> {
                               height: MediaQuery.of(context).size.height *0.055,
                               decoration: BoxDecoration(
                                 color: Colors.grey,
-                                borderRadius: BorderRadius.circular(30.h),
+                                 borderRadius: BorderRadius.circular(30.h),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(7.0.w),
+                                padding: EdgeInsets.symmetric(vertical: 3.w),
+                                // EdgeInsets.all(7.0.w),
                                 child: Text(
                                 """
 ${widget.monumentList2[index].initial}
@@ -95,12 +96,12 @@ ${widget.monumentList2[index].end}
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontWeight: FontWeight.bold, fontSize: 7.h),
+                                      fontWeight: FontWeight.bold, fontSize: 9.h),
                                 ),
                               ),
                             ),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width *0.4,
+                              width: MediaQuery.of(context).size.width *0.35,
                               child: Padding(
                                 padding: EdgeInsets.all(8.0.w),
                                 child: Text(widget.monumentList2[index].catOnknees,
@@ -110,20 +111,36 @@ ${widget.monumentList2[index].end}
                               ),
                             ),
                             Container(
-                              width: MediaQuery.of(context).size.width *0.15,
+                              width: MediaQuery.of(context).size.width *0.3,
                               alignment: Alignment.centerLeft,
-                              child: Text(
-                                widget.monumentList2[index].yale,
-                                textAlign: TextAlign.start
-                                ,
-                                style: TextStyle(
-                                  fontSize: 13.h,
-                                  color: Colors.grey,
-                                ),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    widget.monumentList2[index].yale,
+                                    textAlign: TextAlign.start
+                                    ,
+                                    style: TextStyle(
+                                      fontSize: 13.h,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left:8.h),
+                                    child: Text(
+                                      widget.monumentList2[index].jyutpin,
+                                      textAlign: TextAlign.start
+                                      ,
+                                      style: TextStyle(
+                                        fontSize: 13.h,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                            (widget.monumentList2[index].voice != "")?SizedBox(
-                             width: MediaQuery.of(context).size.width*0.15,
+                             width: MediaQuery.of(context).size.width*0.10,
                              child: TextButton(
                                  style: ButtonStyle(
                                      foregroundColor: MaterialStateProperty.all<Color>(colorvolume)
@@ -142,7 +159,7 @@ ${widget.monumentList2[index].end}
                                  },
                                  child: (sound!=null)?sound!: Icon(Icons.volume_up, size: 27.h,)
                              ),
-                           ): SizedBox(width: MediaQuery.of(context).size.width*0.15),
+                           ): SizedBox(width: MediaQuery.of(context).size.width*0.10),
                           ],
                         ),
                       ),

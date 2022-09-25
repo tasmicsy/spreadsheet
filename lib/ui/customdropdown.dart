@@ -6,7 +6,7 @@ Widget CustomDropdown(int index,BuildContext context, void Function(dynamic) onC
 //ScreenUtil.init(context);
   return Container(
     alignment: Alignment.center,
-    height: MediaQuery.of(context).size.height *0.05,
+    height: MediaQuery.of(context).size.height *0.06,
     width: MediaQuery.of(context).size.width * 0.18,
     decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),

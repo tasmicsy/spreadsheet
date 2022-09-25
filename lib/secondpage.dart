@@ -165,8 +165,9 @@ class _SecondPageState extends State<SecondPage> {
                       children: [
                         CustromTitle(title: "同音漢字"),
                         Padding(
-                          padding: const EdgeInsets.only(bottom:8.0),
-                          child: Text(widget.monument.chinese),
+                          padding:EdgeInsets.only( bottom: 8.0.h, left: MediaQuery.of(context).size.width*0.04, right: MediaQuery.of(context).size.width*0.04),
+                          child: Text(widget.monument.chinese,  style: TextStyle(fontSize: 13.h))
+                          // child: TextWithPad(content: Text(widget.monument.chinese, style: TextStyle(fontSize: 13.h),)),
                         )
                       ],
                     ),

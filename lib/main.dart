@@ -220,7 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     Padding(
                                       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
                                       child: TextButton(onPressed: (){
-                                        launchUrl(Uri.parse('mailto:infocatonknees@gmail.com?subject=お問い合せ&body=お問合せ内容を書いてください。'));
+                                        launchUrl(Uri.parse('mailto:info@catonknees.com?subject=お問い合せ&body=お問合せ内容を書いてください。'));
                                       }, child: Text("お問合せ", style: TextStyle(fontSize: 15.h),)),
                                     ),
                                     Padding(

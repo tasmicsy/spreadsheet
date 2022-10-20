@@ -232,7 +232,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                     Padding(
                                       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
                                       child: TextButton(onPressed: (){
-                                        Share.share("広東語の発音をひらがな表記に！https://youtube.com/playlist?list=PLZ4XMcZZE-B0mz1ICjKc3Iaw5VD00RLyF");
+                                        Share.share("""
+広東語の発音をひらがな表記に！
+iOS版→ https://apple.co/3eJfskB 
+Android版→ https://play.google.com/store/apps/details?id=com.catonknees.conversion&hl=ja&gl=US
+                                        """);
                                       }, child: Text("シェアする", style: TextStyle(fontSize: 15.h),)),
                                     ),
                                   ],
@@ -250,7 +254,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: IconButton(
                           padding: EdgeInsets.zero,
                           onPressed: (){
-                            Share.share("広東語の発音をひらがな表記に！https://youtube.com/playlist?list=PLZ4XMcZZE-B0mz1ICjKc3Iaw5VD00RLyF");
+                            Share.share(
+                                """
+広東語の発音をひらがな表記に！
+iOS版→ https://apple.co/3eJfskB 
+Android版→ https://play.google.com/store/apps/details?id=com.catonknees.conversion&hl=ja&gl=US
+                                        """
+                            );
                           },
                           icon: Icon(Icons.ios_share_outlined, size: 18.h,),
                         ),),

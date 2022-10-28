@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 List<int?> pickerValue = [0,0,0,0];
 class DropdownItems {
   static List<String> firstItemsString = [
-   "声母", "b", "ch", "d", "f", "g", "gw", "h", "j", "l", "m", "n", "ng", "p", "s", "t", "k", "kw", "w", "y", "X無し"
+   "子音", "b", "ch", "d", "f", "g", "gw", "h", "j", "l", "m", "n", "ng", "p", "s", "t", "k", "kw", "w", "y", "X無し"
   ];
   static List<String> secondItemsString = [
-   "韻母1", "a", "aa","e","i","o","u", "yu",  "aai","aau","ai","au", "eu","ei","ou", "iu",    "ui",  "oi","eoi",   "oe","eo" ,   "X無し"
+   "母音", "a", "aa","e","i","o","u", "yu",  "aai","aau","ai","au", "eu","ei","ou", "iu",    "ui",  "oi","eoi",   "oe","eo" ,   "X無し"
   ];
   static List<String> thirdItemsString = [
-   "韻母2", "m", "n", "ng", "p", "t", "k", "X無し",  ];
+   "語尾", "m", "n", "ng", "p", "t", "k", "X無し",  ];
   static List<String> fourthItemsString = [
     "声調","1", "2", "3", "4", "5", "6"  ];
 

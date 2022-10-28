@@ -167,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
     );
     _bannerAd.load();
-   adInterstitial.showAd();
+   // adInterstitial.showAd();
   }
   // MyHomePage({ required this.monuments});
   @override
@@ -191,8 +191,11 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+
+
+                  /// 世界初！広東語ひらがな表記
                   Padding(
-                    padding: EdgeInsets.only(top: 2.0.h, bottom: 7.h),
+                    padding: EdgeInsets.only(top: 20.0.h, bottom: 7.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -267,26 +270,36 @@ Android版→ https://play.google.com/store/apps/details?id=com.catonknees.conve
                       ],
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset("assets/logostraight.png", height: 30.h,
+
+
+
+                  /// CatOnKnees式
+                  Container(
+                    // color: Colors.red,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset("assets/logostraight.png", height: 30.h,
             // width: MediaQuery
             //               .of(context)
             //               .size
             //               .width * 0.65,
-                      ),
-                      SizedBox(
-                          height: 50.h,
-                          child: FittedBox(child: Text(" 式", style: TextStyle(fontSize: 40.sp),))),
-                    ],
+                        ),
+                        SizedBox(
+                            height: 50.h,
+                            child: FittedBox(child: Text(" 式", style: TextStyle(fontSize: 40.sp),))),
+                      ],
+                    ),
                   ),
 
-                  SizedBox(
+
+                  /// TextFields、解説動画はこちら
+                  Container(
+                    // color: Colors.blue,
                     height: MediaQuery
                         .of(context)
                         .size
-                        .height * 0.43,
+                        .height * 0.37,
                     width: MediaQuery
                         .of(context)
                         .size
@@ -294,6 +307,8 @@ Android版→ https://play.google.com/store/apps/details?id=com.catonknees.conve
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+
+                        ///解説動画
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -319,76 +334,130 @@ Android版→ https://play.google.com/store/apps/details?id=com.catonknees.conve
                             )
                           ],
                         ),
-                        CustomTextField(editController: _editController1,label: "漢字 Chinese", onChangedFunc: (newText){
-                          _scrollController.animateTo(
-                            0, //最初の要素の指定
-                            duration: Duration(milliseconds: 1)/*スクロールの時間*/,
-                            curve: Curves.linear/*スクロールの仕方*/,
-                          );
-                          chineseTmp = newText;
-                          print(newText);
-                          setState((){
-                            chineseTmp = newText;
-                            catOnKneesTmp= catOnKneesTmp;
-                            yaleTmp= yaleTmp;
-                            jyutpingTmp= jyutpingTmp;
-                            initialTmp= initialTmp;
-                            vowelTmp= vowelTmp;
-                            endTmp= endTmp;
-                            toneTmp= toneTmp;
+                        ///TextFields
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
 
-                          });
-                          },),
-                        CustomTextField(editController: _editController2,label: "ひらがな CatOnKnees", onChangedFunc: (newText){
-                          _scrollController.animateTo(
-                            0, //最初の要素の指定
-                            duration: Duration(milliseconds: 1)/*スクロールの時間*/,
-                            curve: Curves.linear/*スクロールの仕方*/,
-                          );
-                          setState((){
-                            chineseTmp = chineseTmp;
-                            catOnKneesTmp= newText;
-                            yaleTmp= yaleTmp;
-                            jyutpingTmp= jyutpingTmp;
-                            initialTmp= initialTmp;
-                            vowelTmp= vowelTmp;
-                            endTmp= endTmp;
-                            toneTmp= toneTmp;
-                          });
-                          },),
-                        CustomTextField(editController: _editController3,label: "イエール Yale", onChangedFunc: (newText){
-                          _scrollController.animateTo(
-                            0, //最初の要素の指定
-                            duration:Duration(milliseconds: 1)/*スクロールの時間*/,
-                            curve: Curves.linear/*スクロールの仕方*/,
-                          );
-                          setState((){
-                            chineseTmp = chineseTmp;
-                            catOnKneesTmp= catOnKneesTmp;
-                            yaleTmp = newText;
-                            jyutpingTmp= jyutpingTmp;
-                            initialTmp= initialTmp;
-                            vowelTmp= vowelTmp;
-                            endTmp= endTmp;
-                            toneTmp= toneTmp;
-                          });},),
-                        CustomTextField(editController: _editController4,label: "粵拼 Jyutping", onChangedFunc: (newText){
-                          _scrollController.animateTo(
-                            0, //最初の要素の指定
-                            duration: Duration(milliseconds: 1)/*スクロールの時間*/,
-                            curve: Curves.linear/*スクロールの仕方*/,
-                          );
-                          setState((){
-                            jyutpingTmp = newText;
-                            chineseTmp = chineseTmp;
-                            catOnKneesTmp= catOnKneesTmp;
-                            yaleTmp= yaleTmp;
-                            initialTmp= initialTmp;
-                            vowelTmp= vowelTmp;
-                            endTmp= endTmp;
-                            toneTmp= toneTmp;
-                          });},),
+                            ///漢字
+                            Container(
+                              // color:  Colors.black87,
+                              alignment: Alignment.topCenter,
+                              width:MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width * 0.33,
+                                                height: MediaQuery
+                .of(context)
+                .size
+                .height * 0.2,
+                              child: CustomTextField(
+                                fontSize:90,
+                                height: 200,
+                                editController: _editController1,
+                                label: """
+漢字
+(1文字のみ)
+Chinese
+Character
+""",
+                                onChangedFunc: (newText){
+                                _scrollController.animateTo(
+                                  0, //最初の要素の指定
+                                  duration: Duration(milliseconds: 1)/*スクロールの時間*/,
+                                  curve: Curves.linear/*スクロールの仕方*/,
+                                );
+                                chineseTmp = newText;
+                                print(newText);
+                                setState((){
+                                  chineseTmp = newText;
+                                  catOnKneesTmp= catOnKneesTmp;
+                                  yaleTmp= yaleTmp;
+                                  jyutpingTmp= jyutpingTmp;
+                                  initialTmp= initialTmp;
+                                  vowelTmp= vowelTmp;
+                                  endTmp= endTmp;
+                                  toneTmp= toneTmp;
+
+                                });
+                              },),
+                            ),
+                            SizedBox(width: MediaQuery
+                                .of(context)
+                                .size
+                                .width * 0.04,),
+                            SizedBox(
+                              width: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width * 0.43,
+                              child: Column(
+                                children: [
+                                  CustomTextField(
+                                    fontSize: 22,
+                                    height: 39,
+                                    editController: _editController2,label: "ひらがな CatOnKnees", onChangedFunc: (newText){
+                                    _scrollController.animateTo(
+                                      0, //最初の要素の指定
+                                      duration: Duration(milliseconds: 1)/*スクロールの時間*/,
+                                      curve: Curves.linear/*スクロールの仕方*/,
+                                    );
+                                    setState((){
+                                      chineseTmp = chineseTmp;
+                                      catOnKneesTmp= newText;
+                                      yaleTmp= yaleTmp;
+                                      jyutpingTmp= jyutpingTmp;
+                                      initialTmp= initialTmp;
+                                      vowelTmp= vowelTmp;
+                                      endTmp= endTmp;
+                                      toneTmp= toneTmp;
+                                    });
+                                    },),
+                                  CustomTextField(
+                                    fontSize: 22,
+                                    height: 40,
+                                    editController: _editController3,label: "イエール Yale", onChangedFunc: (newText){
+                                    _scrollController.animateTo(
+                                      0, //最初の要素の指定
+                                      duration:Duration(milliseconds: 1)/*スクロールの時間*/,
+                                      curve: Curves.linear/*スクロールの仕方*/,
+                                    );
+                                    setState((){
+                                      chineseTmp = chineseTmp;
+                                      catOnKneesTmp= catOnKneesTmp;
+                                      yaleTmp = newText;
+                                      jyutpingTmp= jyutpingTmp;
+                                      initialTmp= initialTmp;
+                                      vowelTmp= vowelTmp;
+                                      endTmp= endTmp;
+                                      toneTmp= toneTmp;
+                                    });},),
+                                  CustomTextField(
+                                    fontSize: 22,
+                                    height: 40,
+                                    editController: _editController4,label: "粵拼 Jyutping", onChangedFunc: (newText){
+                                    _scrollController.animateTo(
+                                      0, //最初の要素の指定
+                                      duration: Duration(milliseconds: 1)/*スクロールの時間*/,
+                                      curve: Curves.linear/*スクロールの仕方*/,
+                                    );
+                                    setState((){
+                                      jyutpingTmp = newText;
+                                      chineseTmp = chineseTmp;
+                                      catOnKneesTmp= catOnKneesTmp;
+                                      yaleTmp= yaleTmp;
+                                      initialTmp= initialTmp;
+                                      vowelTmp= vowelTmp;
+                                      endTmp= endTmp;
+                                      toneTmp= toneTmp;
+                                    });},),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                         Padding(padding: EdgeInsets.only(top: 3)),
+                        /// DropDown
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -401,10 +470,10 @@ Android版→ https://play.google.com/store/apps/details?id=com.catonknees.conve
                             print(p0);
                             setState((){
                               pickerValue[0] = p0;
-                              if(DropdownItems.firstItemsString[p0] == "声母") initialTmp = null;
+                              if(DropdownItems.firstItemsString[p0] == "子音") initialTmp = null;
                               else initialTmp = (DropdownItems.firstItemsString[p0] == "X無し")? "":DropdownItems.firstItemsString[p0];
 
-                            }); }, "声母", DropdownItems.Items(DropdownItems.firstItemsString)),
+                            }); }, "子音", DropdownItems.Items(DropdownItems.firstItemsString)),
                           CustomDropdown(1,context,
                                   (p0) {
                                     _scrollController.animateTo(
@@ -414,14 +483,14 @@ Android版→ https://play.google.com/store/apps/details?id=com.catonknees.conve
                                     );
                             setState((){
                                     pickerValue[1] = p0;
-                                    if(DropdownItems.secondItemsString[p0] == "韻母1") vowelTmp = null;
-                                    else vowelTmp = (DropdownItems.secondItemsString[p0] == "X無し")? "":DropdownItems.secondItemsString[p0];});}, "韻母1", DropdownItems.Items(DropdownItems.secondItemsString)),
+                                    if(DropdownItems.secondItemsString[p0] == "母音") vowelTmp = null;
+                                    else vowelTmp = (DropdownItems.secondItemsString[p0] == "X無し")? "":DropdownItems.secondItemsString[p0];});}, "母音", DropdownItems.Items(DropdownItems.secondItemsString)),
                           CustomDropdown(2,context,
                                   (p0) { setState((){
                                     pickerValue[2] = p0;
-                                    if(DropdownItems.thirdItemsString[p0] == "韻母2") endTmp = null;
+                                    if(DropdownItems.thirdItemsString[p0] == "語尾") endTmp = null;
                                     else endTmp = (DropdownItems.thirdItemsString[p0] == "X無し")? "":DropdownItems.thirdItemsString[p0];
-                                  });}, "韻母2", DropdownItems.Items(
+                                  });}, "語尾", DropdownItems.Items(
                                   DropdownItems.thirdItemsString)),
                           CustomDropdown(3,context, (p0) {
                             _scrollController.animateTo(
@@ -497,7 +566,20 @@ Android版→ https://play.google.com/store/apps/details?id=com.catonknees.conve
                 .of(context)
                 .size
                 .height * 0.32,
-                      child: Center(child: CircularProgressIndicator())),
+                      child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircularProgressIndicator(
+                                color:Colors.brown
+                              ),
+                              Text("""
+起動時は読み込みに時間がかかります。
+しばらくお待ちください。。☕️
+""",textAlign: TextAlign.center, )
+                            ],
+                          )
+                      )),
                   (_isBannerAdReady)?SizedBox(
             width: _bannerAd.size.width.toDouble(),
             height: _bannerAd.size.height.toDouble(),

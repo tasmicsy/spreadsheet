@@ -116,7 +116,7 @@ ${widget.monumentList2[index].end}
                               child: Row(
                                 children: [
                                   Text(
-                                    widget.monumentList2[index].yale,
+                                    widget.monumentList2[index].tone,
                                     textAlign: TextAlign.start
                                     ,
                                     style: TextStyle(

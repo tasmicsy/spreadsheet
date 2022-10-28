@@ -299,7 +299,7 @@ Android版→ https://play.google.com/store/apps/details?id=com.catonknees.conve
                     height: MediaQuery
                         .of(context)
                         .size
-                        .height * 0.37,
+                        .height * 0.4,
                     width: MediaQuery
                         .of(context)
                         .size

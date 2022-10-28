@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:share/share.dart';
 import 'package:spreadsheet/ad_helper.dart';
 import 'package:spreadsheet/data/dropdownitems.dart';
 import 'package:spreadsheet/firebase_options.dart';
 import 'package:spreadsheet/monumentmodel.dart';
 import 'package:spreadsheet/ui/button.dart';
+import 'package:spreadsheet/ui/buttons.dart';
 import 'package:spreadsheet/ui/customdropdown.dart';
 import 'package:spreadsheet/ui/monumentlst.dart';
 import 'package:spreadsheet/ui/textfield.dart';
@@ -140,6 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
   InterstitialAd? _interstitialAd;
   AdInterstitial adInterstitial = new AdInterstitial();
   var _scrollController = ScrollController();
+  final player = AudioPlayer();
 
   @override
   void initState(){
@@ -167,13 +170,34 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
     );
     _bannerAd.load();
+Future(()async{
+  await player.setUrl(
+      "https://catonknees.com/wp-content/uploads/2022/10/2s.mp3");
+  player.play();
+});
    // adInterstitial.showAd();
   }
   // MyHomePage({ required this.monuments});
   @override
   Widget build(BuildContext context) {
 
+    print("done");
     return Scaffold(
+        appBar: AppBar(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20),
+            ),
+          ),
+          centerTitle: true,
+          backgroundColor: Color.fromRGBO(131, 120, 117, 1),
+          leading: const InfoButton(),
+          title:  Text("Cantonese Converter",
+
+            style: TextStyle(fontSize: 20.sp),),
+          actions: const [ShareButton()],
+        ),
+
         resizeToAvoidBottomInset: false,
         backgroundColor: Color.fromRGBO(228, 219, 216, 1),
         body: FutureBuilder<List<MonumentModel>>(
@@ -187,107 +211,107 @@ class _MyHomePageState extends State<MyHomePage> {
             );
             if (snapshot.hasError) print('now${snapshot.error}');
             return Padding(
-              padding:  EdgeInsets.only(top: 35.h, bottom: 5.h),
+              padding:  EdgeInsets.only(top: 10.h, bottom: 5.h),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
 
 
                   /// 世界初！広東語ひらがな表記
-                  Padding(
-                    padding: EdgeInsets.only(top: 20.0.h, bottom: 7.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 16.h,
-                          width: 15.w,
-                          child: IconButton(onPressed: (){
-                            showDialog(context: context, builder: (context){
-                              return SimpleDialog(
-
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
-                                      child: TextButton(onPressed: (){
-                                        launchUrl(Uri.parse("https://catonknees.com/privacy-policy-tc/")) ;
-                                      }, child: Text("プライバシーポリシー", style: TextStyle(fontSize: 15.h),)),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
-                                      child: TextButton(onPressed: (){
-                                        launchUrl(Uri.parse("https://www.freeprivacypolicy.com/live/fee39dae-6962-4722-a07d-1e71c92801d7"));
-                                      }, child: Text("利用規約", style: TextStyle(fontSize: 15.h),)),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
-                                      child: TextButton(onPressed: (){
-                                        launchUrl(Uri.parse('mailto:info@catonknees.com?subject=お問い合せ&body=お問合せ内容を書いてください。'));
-                                      }, child: Text("お問合せ", style: TextStyle(fontSize: 15.h),)),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
-                                      child: TextButton(onPressed: (){
-                                        launchUrl(Uri.parse("https://catonknees.com/"));
-                                      }, child: Text("ホームページ", style: TextStyle(fontSize: 15.h),)),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
-                                      child: TextButton(onPressed: (){
-                                        Share.share("""
-広東語の発音をひらがな表記に！
-iOS版→ https://apple.co/3eJfskB 
-Android版→ https://play.google.com/store/apps/details?id=com.catonknees.conversion&hl=ja&gl=US
-                                        """);
-                                      }, child: Text("シェアする", style: TextStyle(fontSize: 15.h),)),
-                                    ),
-                                  ],
-
-                              );
-                            });
-                          },
-                              padding: EdgeInsets.zero,
-                              icon: Icon(Icons.dehaze, size: 23.h,)),
-                        ),
-                        Text("世界初！広東語発音ひらがな表記", style: TextStyle(
-                          fontSize: 14.h,
-                        ),),
-                        SizedBox(height: 16.h, width: 15.w,
-                        child: IconButton(
-                          padding: EdgeInsets.zero,
-                          onPressed: (){
-                            Share.share(
-                                """
-広東語の発音をひらがな表記に！
-iOS版→ https://apple.co/3eJfskB 
-Android版→ https://play.google.com/store/apps/details?id=com.catonknees.conversion&hl=ja&gl=US
-                                        """
-                            );
-                          },
-                          icon: Icon(Icons.ios_share_outlined, size: 18.h,),
-                        ),),
-                      ],
-                    ),
-                  ),
+//                   Padding(
+//                     padding: EdgeInsets.only(top: 20.0.h, bottom: 7.h),
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                       crossAxisAlignment: CrossAxisAlignment.start,
+//                       children: [
+//                         SizedBox(
+//                           height: 16.h,
+//                           width: 15.w,
+//                           child: IconButton(onPressed: (){
+//                             showDialog(context: context, builder: (context){
+//                               return SimpleDialog(
+//
+//                                   children: [
+//                                     Padding(
+//                                       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
+//                                       child: TextButton(onPressed: (){
+//                                         launchUrl(Uri.parse("https://catonknees.com/privacy-policy-tc/")) ;
+//                                       }, child: Text("プライバシーポリシー", style: TextStyle(fontSize: 15.h),)),
+//                                     ),
+//                                     Padding(
+//                                       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
+//                                       child: TextButton(onPressed: (){
+//                                         launchUrl(Uri.parse("https://www.freeprivacypolicy.com/live/fee39dae-6962-4722-a07d-1e71c92801d7"));
+//                                       }, child: Text("利用規約", style: TextStyle(fontSize: 15.h),)),
+//                                     ),
+//                                     Padding(
+//                                       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
+//                                       child: TextButton(onPressed: (){
+//                                         launchUrl(Uri.parse('mailto:info@catonknees.com?subject=お問い合せ&body=お問合せ内容を書いてください。'));
+//                                       }, child: Text("お問合せ", style: TextStyle(fontSize: 15.h),)),
+//                                     ),
+//                                     Padding(
+//                                       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
+//                                       child: TextButton(onPressed: (){
+//                                         launchUrl(Uri.parse("https://catonknees.com/"));
+//                                       }, child: Text("ホームページ", style: TextStyle(fontSize: 15.h),)),
+//                                     ),
+//                                     Padding(
+//                                       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
+//                                       child: TextButton(onPressed: (){
+//                                         Share.share("""
+// 広東語の発音をひらがな表記に！
+// iOS版→ https://apple.co/3eJfskB
+// Android版→ https://play.google.com/store/apps/details?id=com.catonknees.conversion&hl=ja&gl=US
+//                                         """);
+//                                       }, child: Text("シェアする", style: TextStyle(fontSize: 15.h),)),
+//                                     ),
+//                                   ],
+//
+//                               );
+//                             });
+//                           },
+//                               padding: EdgeInsets.zero,
+//                               icon: Icon(Icons.dehaze, size: 23.h,)),
+//                         ),
+//                         Text("世界初！広東語発音ひらがな表記", style: TextStyle(
+//                           fontSize: 14.h,
+//                         ),),
+//                         SizedBox(height: 16.h, width: 15.w,
+//                         child: IconButton(
+//                           padding: EdgeInsets.zero,
+//                           onPressed: (){
+//                             Share.share(
+//                                 """
+// 広東語の発音をひらがな表記に！
+// iOS版→ https://apple.co/3eJfskB
+// Android版→ https://play.google.com/store/apps/details?id=com.catonknees.conversion&hl=ja&gl=US
+//                                         """
+//                             );
+//                           },
+//                           icon: Icon(Icons.ios_share_outlined, size: 18.h,),
+//                         ),),
+//                       ],
+//                     ),
+//                   ),
 
 
 
                   /// CatOnKnees式
                   Container(
-                    // color: Colors.red,
+                      // color: Colors.red,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset("assets/logostraight.png", height: 30.h,
+                        Image.asset("assets/logostraight.png", height: 35.h,
             // width: MediaQuery
             //               .of(context)
             //               .size
             //               .width * 0.65,
                         ),
-                        SizedBox(
-                            height: 50.h,
-                            child: FittedBox(child: Text(" 式", style: TextStyle(fontSize: 40.sp),))),
+                        // SizedBox(
+                        //     height: 50.h,
+                        //     child: FittedBox(child: Text(" 式", style: TextStyle(fontSize: 40.sp),))),
                       ],
                     ),
                   ),
@@ -295,11 +319,11 @@ Android版→ https://play.google.com/store/apps/details?id=com.catonknees.conve
 
                   /// TextFields、解説動画はこちら
                   Container(
-                    // color: Colors.blue,
+                     // color: Colors.blue,
                     height: MediaQuery
                         .of(context)
                         .size
-                        .height * 0.4,
+                        .height * 0.38,
                     width: MediaQuery
                         .of(context)
                         .size

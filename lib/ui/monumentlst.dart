@@ -116,7 +116,7 @@ ${widget.monumentList2[index].end}
                               child: Row(
                                 children: [
                                   Text(
-                                    widget.monumentList2[index].tone,
+                                    widget.monumentList2[index].jyutpin,
                                     textAlign: TextAlign.start
                                     ,
                                     style: TextStyle(
@@ -127,7 +127,7 @@ ${widget.monumentList2[index].end}
                                   Padding(
                                     padding: EdgeInsets.only(left:8.h),
                                     child: Text(
-                                      widget.monumentList2[index].jyutpin,
+                                      widget.monumentList2[index].tone,
                                       textAlign: TextAlign.start
                                       ,
                                       style: TextStyle(

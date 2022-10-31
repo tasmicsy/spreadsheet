@@ -106,6 +106,9 @@ class _MyAppState extends State<MyApp> {
       splitScreenMode: true,
       builder: (child) {
         return MaterialApp(
+          theme: ThemeData(
+            fontFamily: "Comfortaa"
+          ),
           builder:   EasyLoading.init(),
           debugShowCheckedModeBanner: false,
             home:MyHomePage());
@@ -174,21 +177,23 @@ Future(()async{
   await player.setUrl(
       "https://catonknees.com/wp-content/uploads/2022/10/2s.mp3");
   player.play();
-});
+  // print("yey");
+}
+);
    // adInterstitial.showAd();
   }
   // MyHomePage({ required this.monuments});
   @override
   Widget build(BuildContext context) {
 
-    print("done");
+    // print("done");
     return Scaffold(
         appBar: AppBar(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),
-            ),
-          ),
+          // shape: RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.vertical(
+          //     bottom: Radius.circular(20),
+          //   ),
+          // ),
           centerTitle: true,
           backgroundColor: Color.fromRGBO(131, 120, 117, 1),
           leading: const InfoButton(),
@@ -213,7 +218,7 @@ Future(()async{
             return Padding(
               padding:  EdgeInsets.only(top: 10.h, bottom: 5.h),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
 
 
@@ -298,21 +303,54 @@ Future(()async{
 
 
                   /// CatOnKnees式
-                  Container(
-                      // color: Colors.red,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset("assets/logostraight.png", height: 35.h,
+                  Padding(
+                    padding: const EdgeInsets.only(top:15.0),
+                    child: Container(
+                        // color: Colors.red,
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset("assets/logostraight.png", height: 35.h,
             // width: MediaQuery
             //               .of(context)
             //               .size
             //               .width * 0.65,
-                        ),
-                        // SizedBox(
-                        //     height: 50.h,
-                        //     child: FittedBox(child: Text(" 式", style: TextStyle(fontSize: 40.sp),))),
-                      ],
+                              ),
+                              // SizedBox(
+                              //     height: 50.h,
+                              //     child: FittedBox(child: Text(" 式", style: TextStyle(fontSize: 40.sp),))),
+                            ],
+                          ),
+                          ///解説動画
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('広東語発音完全解説動画は', style: TextStyle(fontSize: 12.h),),
+                              SizedBox(
+                                height: 28.h,
+                                width: 40.h,
+                                child: TextButton(
+                                    onPressed: ()async {
+                                      launchUrl(Uri.parse('https://youtube.com/playlist?list=PLZ4XMcZZE-B0mz1ICjKc3Iaw5VD00RLyF'));
+                                    },
+                                    style: ButtonStyle(
+                                        alignment: Alignment.center,
+                                        padding: MaterialStateProperty.all(EdgeInsets.zero)
+                                    ),
+
+                                    child: Text('こちら',style: TextStyle(
+                                        decoration: TextDecoration.underline,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.brown,
+                                        fontSize: 12.h
+                                    ),textAlign: TextAlign.start,)),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
 
@@ -323,7 +361,7 @@ Future(()async{
                     height: MediaQuery
                         .of(context)
                         .size
-                        .height * 0.38,
+                        .height * 0.35,
                     width: MediaQuery
                         .of(context)
                         .size
@@ -332,32 +370,7 @@ Future(()async{
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
 
-                        ///解説動画
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('広東語発音完全解説動画は', style: TextStyle(fontSize: 12.h),),
-                            SizedBox(
-                              height: 28.h,
-                              width: 40.h,
-                              child: TextButton(
-                                  onPressed: ()async {
-                                    launchUrl(Uri.parse('https://youtube.com/playlist?list=PLZ4XMcZZE-B0mz1ICjKc3Iaw5VD00RLyF'));
-                                  },
-                                  style: ButtonStyle(
-                                      alignment: Alignment.center,
-                                    padding: MaterialStateProperty.all(EdgeInsets.zero)
-                                  ),
-                                  
-                                  child: Text('こちら',style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.brown,
-                                    fontSize: 12.h
-                                  ),textAlign: TextAlign.start,)),
-                            )
-                          ],
-                        ),
+
                         ///TextFields
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -376,7 +389,7 @@ Future(()async{
                 .size
                 .height * 0.2,
                               child: CustomTextField(
-                                fontSize:90,
+                                fontSize:110,
                                 height: 200,
                                 editController: _editController1,
                                 label: """

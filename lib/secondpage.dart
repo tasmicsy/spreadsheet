@@ -57,7 +57,7 @@ class _SecondPageState extends State<SecondPage> {
                       child: FittedBox(
                         child: Column(
                           children: [
-                            Text(widget.monument.initial
+                            SelectableText(widget.monument.initial
                               ,
 
                               style: TextStyle(
@@ -67,7 +67,7 @@ class _SecondPageState extends State<SecondPage> {
                               width: MediaQuery.of(context).size.width*1.5,
                               color: Colors.grey
                             ),
-                            Text(widget.monument.vowel
+                            SelectableText(widget.monument.vowel
                               ,
 
                               style: TextStyle(
@@ -77,7 +77,7 @@ class _SecondPageState extends State<SecondPage> {
                                 width: MediaQuery.of(context).size.width*1.5,
                                 color: Colors.grey
                             ),
-                            Text(widget.monument.end
+                            SelectableText(widget.monument.end
                               ,
 
                               style: TextStyle(
@@ -98,12 +98,12 @@ class _SecondPageState extends State<SecondPage> {
                          if (widget.monument.catOnknees!= "")SizedBox(
                             width: MediaQuery.of(context).size.width*0.4,
 
-                            child: Text('CatOnKnees式:',textAlign: TextAlign.center,
+                            child: SelectableText('CatOnKnees式:',textAlign: TextAlign.center,
                               style: TextStyle(fontSize: 17.h, color: Color.fromRGBO(67, 67, 67, 1)),),
                           ),
-                            Text(widget.monument.catOnknees,style: TextStyle(fontSize: 18.h, color:  Color.fromRGBO(102, 102, 102, 1), fontWeight: FontWeight.bold), ),
-                          if (widget.monument.yale!= "")Text("イエール式:${widget.monument.yale}",style: TextStyle(fontSize: 16.h, color: Colors.grey), ),
-                          if (widget.monument.jyutpin!= "") Text("粵拼: ${widget.monument.jyutpin}",style: TextStyle(fontSize: 16.h, color: Colors.grey), ),
+                            SelectableText(widget.monument.catOnknees,style: TextStyle(fontSize: 18.h, color:  Color.fromRGBO(102, 102, 102, 1), fontWeight: FontWeight.bold), ),
+                          if (widget.monument.yale!= "")SelectableText("イエール式:${widget.monument.yale}",style: TextStyle(fontSize: 16.h, color: Colors.grey), ),
+                          if (widget.monument.jyutpin!= "") SelectableText("粵拼: ${widget.monument.jyutpin}",style: TextStyle(fontSize: 16.h, color: Colors.grey), ),
                          // if (monument.voice!="")
                          if (widget.monument.voice!= "") SizedBox(
                            height: 27.h,
@@ -166,7 +166,7 @@ class _SecondPageState extends State<SecondPage> {
                         CustromTitle(title: "同音漢字"),
                         Padding(
                           padding:EdgeInsets.only( bottom: 8.0.h, left: MediaQuery.of(context).size.width*0.04, right: MediaQuery.of(context).size.width*0.04),
-                          child: Text(widget.monument.chinese,  style: TextStyle(fontSize: 13.h))
+                          child: SelectableText(widget.monument.chinese,  style: TextStyle(fontSize: 13.h))
                           // child: TextWithPad(content: Text(widget.monument.chinese, style: TextStyle(fontSize: 13.h),)),
                         )
                       ],
@@ -204,7 +204,7 @@ class _SecondPageState extends State<SecondPage> {
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.15,
-                                    child: Text("声母", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15.h),),),
+                                    child: SelectableText("声母", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15.h),),),
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.3, child: Text("韻母", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 15.h)),),
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text("声調", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 15.h)),),
                                 ],
@@ -214,9 +214,9 @@ class _SecondPageState extends State<SecondPage> {
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.15,
-                                    child: Text("(子音)", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 13.h)),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text("(母音)", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 13.h)),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text("(語尾)", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 13.h)),),
+                                    child: SelectableText("(子音)", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 13.h)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: SelectableText("(母音)", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 13.h)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: SelectableText("(語尾)", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 13.h)),),
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.15, )
                                 ],),
                               Padding(
@@ -231,10 +231,10 @@ class _SecondPageState extends State<SecondPage> {
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
 
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.initial, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 17.h)),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.vowel, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 17.h)),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.end, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 17.h)),),
-                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: Text(widget.monument.tone, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 17.h)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: SelectableText(widget.monument.initial, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 17.h)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: SelectableText(widget.monument.vowel, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 17.h)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: SelectableText(widget.monument.end, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 17.h)),),
+                                  SizedBox(width: MediaQuery.of(context).size.width * 0.15, child: SelectableText(widget.monument.tone, textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 17.h)),),
                                 ],),
                             ],
                           ),
@@ -252,28 +252,28 @@ class _SecondPageState extends State<SecondPage> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                  Text(widget.monument.cokInitial, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
-                                   Text("   +   ", style: TextStyle(fontSize: 16.h),),
-                                  Text(widget.monument.cokVowel, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
-                                    Text("   +   ", style: TextStyle(fontSize: 16.h),),
-                                 Text(widget.monument.cokEnd, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
+                                  SelectableText(widget.monument.cokInitial, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
+                                   SelectableText("   +   ", style: TextStyle(fontSize: 16.h),),
+                                  SelectableText(widget.monument.cokVowel, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
+                                    SelectableText("   +   ", style: TextStyle(fontSize: 16.h),),
+                                 SelectableText(widget.monument.cokEnd, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("=   ", style: TextStyle(fontSize: 16.h),),
-                                    Text(widget.monument.catOnknees, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
+                                    SelectableText("=   ", style: TextStyle(fontSize: 16.h),),
+                                    SelectableText(widget.monument.catOnknees, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
                                   ],
                                 )
                               ],
                             ),
 
-                          if(widget.monument.cokTips1!="")TextWithPad(content: Text(widget.monument.cokTips1, style: TextStyle(fontSize: 13.h),)),
-                          if(widget.monument.cokTips2!="")TextWithPad(content: Text(widget.monument.cokTips2, style: TextStyle(color: Colors.red, fontSize: 13.h),)),
+                          if(widget.monument.cokTips1!="")TextWithPad(content: SelectableText(widget.monument.cokTips1, style: TextStyle(fontSize: 13.h),)),
+                          if(widget.monument.cokTips2!="")TextWithPad(content: SelectableText(widget.monument.cokTips2, style: TextStyle(color: Colors.red, fontSize: 13.h),)),
 
-                          if(widget.monument.cokTips3!="")TextWithPad(content: Text(widget.monument.cokTips3, style: TextStyle(fontSize: 13.h),)),
-                          if(widget.monument.cokTips4!="")TextWithPad(content: Text(widget.monument.cokTips4, style: TextStyle(fontSize: 13.h),)),
+                          if(widget.monument.cokTips3!="")TextWithPad(content: SelectableText(widget.monument.cokTips3, style: TextStyle(fontSize: 13.h),)),
+                          if(widget.monument.cokTips4!="")TextWithPad(content: SelectableText(widget.monument.cokTips4, style: TextStyle(fontSize: 13.h),)),
                           Padding(padding: EdgeInsets.all(8))
                         ],
                       ),
@@ -295,7 +295,7 @@ class _SecondPageState extends State<SecondPage> {
                     color: Color.fromRGBO(217, 217, 217, 1),
                       contents: Column(
                       children: [
-                        TextWithPad(content: Text(widget.monument.vocab,textAlign: TextAlign.center, style: TextStyle(fontSize: 13.h),)),
+                        TextWithPad(content: SelectableText(widget.monument.vocab,textAlign: TextAlign.center, style: TextStyle(fontSize: 13.h),)),
                         Padding(padding: EdgeInsets.all(8))
                       ]
                   )),
@@ -388,7 +388,7 @@ class CustromTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding:EdgeInsets.symmetric(vertical: 8.h),
-      child: Text(title, textAlign: TextAlign.center,style: TextStyle(fontSize: 14.h, fontWeight: FontWeight.bold)),
+      child: SelectableText(title, textAlign: TextAlign.center,style: TextStyle(fontSize: 14.h, fontWeight: FontWeight.bold)),
     );
   }
 }

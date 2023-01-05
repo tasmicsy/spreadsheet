@@ -104,7 +104,7 @@ class _MyAppState extends State<MyApp> {
       designSize: const Size(360,900),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (child) {
+      builder: (context,child) {
         return MaterialApp(
           theme: ThemeData(
             fontFamily: "Comfortaa"
@@ -210,8 +210,8 @@ Future(()async{
           builder: (context, snapshot) {
 
             ScreenUtil.init(context,
-                orientation: Orientation.landscape,
-                deviceSize: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),
+
+                designSize: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),
 
             );
             if (snapshot.hasError) print('now${snapshot.error}');

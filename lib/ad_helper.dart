@@ -101,7 +101,7 @@ int t=0;
       return "ca-app-pub-5943388097691889/9738524490";
     } else {
       //どちらでもない場合は、テスト用を返す
-      return BannerAd.testAdUnitId;
+      throw new UnsupportedError('Unsupported platform');
     }
   }
 }

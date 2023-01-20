@@ -150,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState(){
 
-    // loadInitialAd();
+    loadInitialAd();
     super.initState();
     adInterstitial.createAd();
     _bannerAd = BannerAd(
@@ -180,7 +180,7 @@ Future(()async{
   // print("yey");
 }
 );
-   // adInterstitial.showAd();
+   adInterstitial.showAd();
   }
   // MyHomePage({ required this.monuments});
   @override

@@ -31,7 +31,7 @@ flutter_icons:
   image_path: "assets/AppIcon.jpg"
   android: true
   ios: true
-  adaptive_icon_background: '#63A247'
+  adaptive_icon_background: '#847253'
   adaptive_icon_foreground: 'assets/COKAppIconlogo_foreground.png'
 
 dependencies:

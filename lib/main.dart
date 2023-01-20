@@ -106,9 +106,9 @@ class _MyAppState extends State<MyApp> {
       splitScreenMode: true,
       builder: (context,child) {
         return MaterialApp(
-          theme: ThemeData(
-            fontFamily: "Comfortaa"
-          ),
+          // theme: ThemeData(
+          //   fontFamily: "Comfortaa"
+          // ),
           builder:   EasyLoading.init(),
           debugShowCheckedModeBanner: false,
             home:MyHomePage());

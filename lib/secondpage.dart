@@ -268,9 +268,9 @@ class _SecondPageState extends State<SecondPage> {
                                 )
                               ],
                             ),
+                          if(widget.monument.cokTips2!="")TextWithPad(content: SelectableText(widget.monument.cokTips2, style: TextStyle(color: Colors.red, fontSize: 13.h),)),
 
                           if(widget.monument.cokTips1!="")TextWithPad(content: SelectableText(widget.monument.cokTips1, style: TextStyle(fontSize: 13.h),)),
-                          if(widget.monument.cokTips2!="")TextWithPad(content: SelectableText(widget.monument.cokTips2, style: TextStyle(color: Colors.red, fontSize: 13.h),)),
 
                           if(widget.monument.cokTips3!="")TextWithPad(content: SelectableText(widget.monument.cokTips3, style: TextStyle(fontSize: 13.h),)),
                           if(widget.monument.cokTips4!="")TextWithPad(content: SelectableText(widget.monument.cokTips4, style: TextStyle(fontSize: 13.h),)),

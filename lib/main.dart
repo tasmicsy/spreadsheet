@@ -433,7 +433,7 @@ Character
                                 children: [
                                   CustomTextField(
                                     fontSize: 22,
-                                    height: 39,
+                                    height: 50,
                                     editController: _editController2,label: "ひらがな CatOnKnees", onChangedFunc: (newText){
                                     _scrollController.animateTo(
                                       0, //最初の要素の指定
@@ -453,7 +453,7 @@ Character
                                     },),
                                   CustomTextField(
                                     fontSize: 22,
-                                    height: 40,
+                                    height: 50,
                                     editController: _editController3,label: "イエール Yale", onChangedFunc: (newText){
                                     _scrollController.animateTo(
                                       0, //最初の要素の指定
@@ -472,7 +472,7 @@ Character
                                     });},),
                                   CustomTextField(
                                     fontSize: 22,
-                                    height: 40,
+                                    height: 50,
                                     editController: _editController4,label: "粵拼 Jyutping", onChangedFunc: (newText){
                                     _scrollController.animateTo(
                                       0, //最初の要素の指定

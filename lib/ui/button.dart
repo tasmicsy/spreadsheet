@@ -30,7 +30,7 @@ textStyle: MaterialStateProperty.all<TextStyle>(TextStyle(fontWeight: FontWeight
               )
           ),
         onPressed: onPressedFunc,child: SizedBox(
-          width:MediaQuery.of(context).size.width*0.3,
+          width:MediaQuery.of(context).size.width*0.33,
           height: MediaQuery.of(context).size.height*0.04,
           child: name),),
     );

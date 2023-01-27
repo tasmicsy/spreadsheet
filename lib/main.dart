@@ -313,7 +313,7 @@ Future(()async{
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Image.asset("assets/logostraight.png", height: 35.h,
+                              Image.asset("assets/logostraight.png", height: 40.h,
             // width: MediaQuery
             //               .of(context)
             //               .size
@@ -366,7 +366,7 @@ Future(()async{
                     width: MediaQuery
                         .of(context)
                         .size
-                        .width * 0.8,
+                        .width * 0.87,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -375,6 +375,7 @@ Future(()async{
                         ///TextFields
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
 
                             ///漢字
@@ -384,7 +385,7 @@ Future(()async{
                               width:MediaQuery
                                   .of(context)
                                   .size
-                                  .width * 0.33,
+                                  .width * 0.4,
                                                 height: MediaQuery
                 .of(context)
                 .size

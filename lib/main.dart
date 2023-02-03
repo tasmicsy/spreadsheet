@@ -618,7 +618,7 @@ Character
                                 color:Colors.brown
                               ),
                               Text("""
-起動時は読み込みに時間がかかります。
+起動時/ネット接続時は読み込みに時間がかかります。
 しばらくお待ちください。。☕️
 """,textAlign: TextAlign.center, )
                             ],

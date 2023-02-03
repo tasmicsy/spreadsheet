@@ -429,12 +429,17 @@ Character
                               width: MediaQuery
                                   .of(context)
                                   .size
-                                  .width * 0.43,
+                                  .width * 0.4,
+                              height: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .height * 0.2,
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   CustomTextField(
                                     fontSize: 22,
-                                    height: 50,
+                                    height: 39,
                                     editController: _editController2,label: "ひらがな CatOnKnees", onChangedFunc: (newText){
                                     _scrollController.animateTo(
                                       0, //最初の要素の指定
@@ -454,7 +459,7 @@ Character
                                     },),
                                   CustomTextField(
                                     fontSize: 22,
-                                    height: 50,
+                                    height: 39,
                                     editController: _editController3,label: "イエール Yale", onChangedFunc: (newText){
                                     _scrollController.animateTo(
                                       0, //最初の要素の指定
@@ -473,7 +478,7 @@ Character
                                     });},),
                                   CustomTextField(
                                     fontSize: 22,
-                                    height: 50,
+                                    height: 39,
                                     editController: _editController4,label: "粵拼 Jyutping", onChangedFunc: (newText){
                                     _scrollController.animateTo(
                                       0, //最初の要素の指定

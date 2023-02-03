@@ -20,7 +20,10 @@ class CustomTextField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 0, vertical: 3.h),
       child: Container(
-        height:height.h,
+        height:(height>60)?height.h:MediaQuery
+            .of(context)
+            .size
+            .height * 0.2/3.4,
         child: TextField(
           style: TextStyle(
               fontSize: fontSize.sp),

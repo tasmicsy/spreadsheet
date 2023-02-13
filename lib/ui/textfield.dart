@@ -23,7 +23,7 @@ class CustomTextField extends StatelessWidget {
         height:(height>60)?height.h:MediaQuery
             .of(context)
             .size
-            .height * 0.2/3.4,
+            .height * 0.2/3.5,
         child: TextField(
           style: TextStyle(
               fontSize: fontSize.sp),

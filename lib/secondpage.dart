@@ -101,7 +101,9 @@ class _SecondPageState extends State<SecondPage> {
                             child: SelectableText('CatOnKnees式:',textAlign: TextAlign.center,
                               style: TextStyle(fontSize: 17.h, color: Color.fromRGBO(67, 67, 67, 1)),),
                           ),
-                            SelectableText(widget.monument.catOnknees,style: TextStyle(fontSize: 18.h, color:  Color.fromRGBO(102, 102, 102, 1), fontWeight: FontWeight.bold), ),
+                          SizedBox(
+                            height: 27.h,
+                              child: SelectableText(widget.monument.catOnknees,style: TextStyle(fontSize: 17.h, color:  Color.fromRGBO(102, 102, 102, 1), fontWeight: FontWeight.bold), )),
                           if (widget.monument.yale!= "")SelectableText("イエール式:${widget.monument.yale}",style: TextStyle(fontSize: 16.h, color: Colors.grey), ),
                           if (widget.monument.jyutpin!= "") SelectableText("粵拼: ${widget.monument.jyutpin}",style: TextStyle(fontSize: 16.h, color: Colors.grey), ),
                          // if (monument.voice!="")
@@ -252,18 +254,18 @@ class _SecondPageState extends State<SecondPage> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                  SelectableText(widget.monument.cokInitial, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
-                                   SelectableText("   +   ", style: TextStyle(fontSize: 16.h),),
-                                  SelectableText(widget.monument.cokVowel, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
-                                    SelectableText("   +   ", style: TextStyle(fontSize: 16.h),),
-                                 SelectableText(widget.monument.cokEnd, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
+                                  SizedBox(height: 26.h ,child: SelectableText(widget.monument.cokInitial, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),)),
+                                   SizedBox(height: 26.h ,child: SelectableText("   +   ", style: TextStyle(fontSize: 16.h),)),
+                                  SizedBox(height: 26.h ,child: SelectableText(widget.monument.cokVowel, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),)),
+                                    SizedBox(height: 26.h ,child: SelectableText("   +   ", style: TextStyle(fontSize: 16.h),)),
+                                 SizedBox(height: 26.h ,child: SelectableText(widget.monument.cokEnd, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),)),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    SelectableText("=   ", style: TextStyle(fontSize: 16.h),),
-                                    SelectableText(widget.monument.catOnknees, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),),
+                                    SizedBox(height: 26.h ,child: SelectableText("=   ", style: TextStyle(fontSize: 16.h),)),
+                                    SizedBox(height: 26.h ,child: SelectableText(widget.monument.catOnknees, style: TextStyle(fontSize: 16.h, fontWeight: FontWeight.bold),)),
                                   ],
                                 )
                               ],

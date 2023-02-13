@@ -603,13 +603,13 @@ Character
                       height: MediaQuery
                           .of(context)
                           .size
-                          .height * 0.32,
+                          .height * 0.31,
                       child: monumentList(scrollController: _scrollController,context: context, monumentList2:MonumentModel.searchMonument3(snapshot.data!, chineseTmp, catOnKneesTmp, yaleTmp, jyutpingTmp, initialTmp, vowelTmp, endTmp, toneTmp, voiceTmp??false)))
                       : SizedBox(
                     height: MediaQuery
                 .of(context)
                 .size
-                .height * 0.32,
+                .height * 0.31,
                       child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,

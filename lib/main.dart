@@ -20,22 +20,22 @@ import 'package:url_launcher/url_launcher.dart';
 bool voiceTimes = false;
 
 AppOpenAd? openAd;
-Future<void> loadInitialAd()async{
-  await AppOpenAd.load(
-    adUnitId: AdHelper.startAppAdUnitId,
-    request: const AdRequest(),
-    adLoadCallback: AppOpenAdLoadCallback(
-      onAdLoaded: (ad){
-        print("Ad is loadedddd");
-        openAd = ad;
-        openAd!.show();
-      },
-      onAdFailedToLoad: (error){
-        print("ad failed to load ${error}");
-      }
-    ), orientation: AppOpenAd.orientationPortrait
-  );
-}
+// Future<void> loadInitialAd()async{
+//   await AppOpenAd.load(
+//     adUnitId: AdHelper.startAppAdUnitId,
+//     request: const AdRequest(),
+//     adLoadCallback: AppOpenAdLoadCallback(
+//       onAdLoaded: (ad){
+//         print("Ad is loadedddd");
+//         openAd = ad;
+//         openAd!.show();
+//       },
+//       onAdFailedToLoad: (error){
+//         print("ad failed to load ${error}");
+//       }
+//     ), orientation: AppOpenAd.orientationPortrait
+//   );
+// }
 // void showInitialAd(){
 //   if (openAd == null){
 //     print('trying');
@@ -127,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late BannerAd _bannerAd;
   bool _isBannerAdReady = false;
 
-  late Future<List<MonumentModel>> monuments;
+  // late Future<List<MonumentModel>> monuments;
   final _editController1 = TextEditingController();
   final _editController2 = TextEditingController();
   final _editController3 = TextEditingController();
@@ -150,9 +150,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState(){
 
-    loadInitialAd();
+    // loadInitialAd();
     super.initState();
-    adInterstitial.createAd();
+    // adInterstitial.createAd();
     _bannerAd = BannerAd(
         adUnitId: AdHelper.bannerAdUnitId,
         request: const AdRequest(),
@@ -180,7 +180,7 @@ Future(()async{
   // print("yey");
 }
 );
-   adInterstitial.showAd();
+   // adInterstitial.showAd();
   }
   // MyHomePage({ required this.monuments});
   @override

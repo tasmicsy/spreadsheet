@@ -13,12 +13,12 @@ if (flutterRoot == null) {
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 
-flutterVersionCode = '11'
+flutterVersionCode = '13'
 
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 
-flutterVersionName = '1.7'
+flutterVersionName = '1.8'
 
 apply plugin: 'com.android.application'
 // START: FlutterFire Configuration
